@@ -1,86 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Thomas Ma | Portfolio</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Your Name | Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://threejs.org/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0"></script>
+  <script>
+    new Typed("#typed-text", {
+      strings: [
+        "full-stack apps",
+        "machine learning models",
+        "3D web experiences",
+        "research tools"
+      ],
+      typeSpeed: 60,
+      backSpeed: 40,
+      backDelay: 1500,
+      loop: true,
+      smartBackspace: true,
+      showCursor: true,
+      cursorChar: "|"
+    });
+  </script>
+  
+  <link rel="stylesheet" href="style.css">
 </head>
+<body class="bg-gray-900 text-white">
 
-<body>
-  <header>
-    <h1>Thomas Ma</h1>
-    <p>Machine Learning • Computer Vision • Research</p>
-    <nav>
-      <a href="#projects">Projects</a>
-      <a href="#research">Research</a>
-      <a href="#contact">Contact</a>
-      <a href="https://github.com/YOUR_GITHUB" target="_blank">GitHub</a>
-    </nav>
-  </header>
 
-  <main>
-    <!-- PROJECTS -->
-    <section id="projects">
-      <h2>Projects</h2>
+  <!-- HERO -->
+  <section class="min-h-screen flex flex-col justify-center items-center text-center px-6">
+    <h1 class="text-6xl font-bold bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-transparent">Thomas Ma</h1>
+    <p class="mt-4 text-xl text-white"><strong>Artifical Intelligence Developer and Researcher</strong></p>
+  </section>
 
-      <div class="project-card">
-        <div class="project-info">
-          <h3>3D Reconstruction Pipeline</h3>
-          <p>
-            COLMAP → point cloud filtering → mesh reconstruction.
-            Interactive 3D model below.
-          </p>
-          <ul>
-            <li>COLMAP</li>
-            <li>Computer Vision</li>
-            <li>3D Geometry</li>
-          </ul>
-        </div>
+  <!-- ABOUT -->
+  <section class="container mx-auto py-16">
+    <h2 class="text-4xl font-bold mb-6 text-gradient-to-r from-indigo-400 to-purple-600 bg-clip-text text-transparent">
+      About Me
+    </h2>
+    <p class="text-center text-lg text-gray-200 max-w-3xl mx-auto">
+      I build scalable apps and digital experiences with React, Node.js, and WebGL.
+    </p>
+  </section>
 
-        <div class="model-viewer">
-          <canvas id="modelCanvas"></canvas>
-        </div>
-      </div>
+  <h2 class="text-6xl font-bold">
+    I build&nbsp;
+    <span
+      id="typed-text"
+      class="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent"
+    ></span>
+  </h2>  
 
-      <div class="project-card">
-        <div class="project-info">
-          <h3>BTC Price Prediction</h3>
-          <p>
-            PyTorch MLP vs linear regression baseline for time-series forecasting.
-          </p>
-          <a href="https://github.com/YOUR_GITHUB/BTC-prediction" target="_blank">
-            View Code →
-          </a>
-        </div>
-      </div>
-    </section>
+  <!-- PAPERS / PUBLICATIONS -->
+  <section class="container mx-auto py-16">
+    <h2 class="text-4xl font-bold mb-6 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
+      Publications & Papers
+    </h2>
+    <ul class="space-y-4 text-gray-200">
+      <li>
+        <a href="#" class="hover:text-white font-semibold">Title of Paper #1</a> — Journal of Awesome Research
+      </li>
+      <li>
+        <a href="#" class="hover:text-white font-semibold">Title of Paper #2</a> — Conference XYZ
+      </li>
+      <li>
+        <a href="#" class="hover:text-white font-semibold">Title of Paper #3</a> — Workshop on Web Tech
+      </li>
+    </ul>
+  </section>
 
-    <!-- RESEARCH -->
-    <section id="research">
-      <h2>Research</h2>
+  <!-- 3D MODELS -->
+  <section class="container mx-auto py-16">
+    <h2 class="text-4xl font-bold mb-6 bg-gradient-to-r from-yellow-400 to-red-500 bg-clip-text text-transparent">
+      Interactive 3D Showcase
+    </h2>
+    <div id="three-container" class="w-full h-[500px] rounded-lg shadow-lg"></div>
+  </section>
 
-      <div class="paper">
-        <h3>Deep Learning for Flow Cytometry Analysis</h3>
-        <p>
-          Explores population-aware modeling of high-event flow cytometry files.
-        </p>
-        <a href="assets/papers/paper1.pdf" target="_blank">Read PDF →</a>
-      </div>
-    </section>
+  <!-- PROJECTS CTA -->
+  <section class="container mx-auto text-center py-12">
+    <button class="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-xl font-semibold rounded-lg hover:from-pink-500 hover:to-purple-500 transition">
+      View Projects
+    </button>
+  </section>
 
-    <!-- CONTACT -->
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:thomas@example.com">thomas@example.com</a></p>
-      <p>GitHub: <a href="https://github.com/YOUR_GITHUB">github.com/YOUR_GITHUB</a></p>
-    </section>
-  </main>
-
-  <footer>
-    <p>© 2025 Thomas Ma</p>
-  </footer>
-
-  <script type="module" src="main.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

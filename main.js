@@ -1,55 +1,48 @@
-import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js";
-import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js";
-import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/GLTFLoader.js";
-
-const canvas = document.getElementById("modelCanvas");
-
+// Basic Three.js scene
+const container = document.getElementById("three-container");
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x0d1117);
+scene.background = new THREE.Color(0x111111);
 
-const camera = new THREE.PerspectiveCamera(
-  45,
-  canvas.clientWidth / canvas.clientHeight,
-  0.1,
-  100
-);
-camera.position.set(0, 1, 3);
+const camera = new THREE.PerspectiveCamera(45, container.clientWidth/container.clientHeight, 0.1, 1000 );
+camera.position.set(0, 1.5, 3);
 
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
-renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-renderer.setPixelRatio(window.devicePixelRatio);
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(container.clientWidth, container.clientHeight);
+container.appendChild(renderer.domElement);
 
-// Lights
-scene.add(new THREE.AmbientLight(0xffffff, 0.8));
-const dirLight = new THREE.DirectionalLight(0xffffff, 0.6);
-dirLight.position.set(5, 5, 5);
-scene.add(dirLight);
+// Lighting
+const light = new THREE.DirectionalLight(0xffffff, 1);
+light.position.set(5,5,5);
+scene.add(light);
 
-// Controls
-const controls = new OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true;
+// Add a 3D geometry (cube placeholder)
+const geometry = new THREE.BoxGeometry();
+const material = new THREE.MeshStandardMaterial({ color: 0xff0051 });
+const cube = new THREE.Mesh(geometry, material);
+scene.add(cube);
 
-// Load Model
-const loader = new GLTFLoader();
-loader.load(
-  "assets/models/last-esc.glb",
-  (gltf) => {
-    scene.add(gltf.scene);
-  },
-  undefined,
-  (error) => console.error(error)
-);
-
+// Animation loop
 function animate() {
   requestAnimationFrame(animate);
-  controls.update();
+  cube.rotation.y += 0.01;
   renderer.render(scene, camera);
 }
-
 animate();
 
-window.addEventListener("resize", () => {
-  camera.aspect = canvas.clientWidth / canvas.clientHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-});
+<script>
+  new Typed("#typed-text", {
+    strings: [
+      "full-stack apps",
+      "machine learning models",
+      "3D web experiences",
+      "research tools"
+    ],
+    typeSpeed: 60,
+    backSpeed: 40,
+    backDelay: 1500,
+    loop: true,
+    smartBackspace: true,
+    showCursor: true,
+    cursorChar: "|"
+  });
+</script>
