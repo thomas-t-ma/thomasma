@@ -1,55 +1,52 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-    // ===== TYPED.JS =====
+    // Typed.js
     new Typed("#typed-text", {
       strings: [
-        "full-stack apps",
-        "machine learning models",
-        "3D web experiences",
-        "research software"
+        "cancer diagnosis models",
+        "machine learning",
+        "deep learning",
+        "computer vision"
       ],
       typeSpeed: 60,
       backSpeed: 40,
       backDelay: 1500,
       loop: true,
-      smartBackspace: true,
-      showCursor: true,
-      cursorChar: "|"
+      cursorChar: "▍"
     });
   
-    // ===== THREE.JS =====
+    // Three.js (placeholder scene)
     const container = document.getElementById("three-container");
-    if (!container) return; // <-- prevents crash
   
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x111111);
-  
     const camera = new THREE.PerspectiveCamera(
-      45,
+      75,
       container.clientWidth / container.clientHeight,
       0.1,
       1000
     );
-    camera.position.set(0, 1.5, 3);
   
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(container.clientWidth, container.clientHeight);
     container.appendChild(renderer.domElement);
   
-    const light = new THREE.DirectionalLight(0xffffff, 1);
-    light.position.set(5, 5, 5);
-    scene.add(light);
-  
     const geometry = new THREE.BoxGeometry();
-    const material = new THREE.MeshStandardMaterial({ color: 0xff0051 });
+    const material = new THREE.MeshStandardMaterial({ color: 0x8b5cf6 });
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
   
+    const light = new THREE.PointLight(0xffffff, 1);
+    light.position.set(10, 10, 10);
+    scene.add(light);
+  
+    camera.position.z = 3;
+  
     function animate() {
       requestAnimationFrame(animate);
+      cube.rotation.x += 0.01;
       cube.rotation.y += 0.01;
       renderer.render(scene, camera);
     }
+  
     animate();
   });
   

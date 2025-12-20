@@ -1,76 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Your Name | Portfolio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://threejs.org/build/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0"></script>
-  <script src="app.js"></script>
-  
-  <link rel="stylesheet" href="style.css">
-</head>
-<body class="bg-gray-900 text-white">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thomas Ma | Portfolio</title>
 
+  <!-- Tailwind (dev only) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Three.js -->
+  <script src="https://threejs.org/build/three.min.js"></script>
+
+  <!-- Typed.js (browser-safe build) -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="text-white">
 
   <!-- HERO -->
-  <section class="min-h-screen flex flex-col justify-center items-center text-center px-6">
-    <h1 class="text-6xl font-bold bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-transparent">Thomas Ma</h1>
-    <p class="mt-4 text-xl text-white"><strong>Artifical Intelligence Developer and Researcher</strong></p>
+  <section class="flex flex-col items-center text-center px-6 pt-16">
+    <h1 class="text-7xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
+      Thomas Ma
+    </h1>
+
+    <p class="mt-4 text-3xl">
+      <strong>Artificial Intelligence Researcher & Future Medical Student</strong>
+    </p>
+      
+    <!-- University Logo -->
+    <img 
+    src="assets/images/emory-logo.png" 
+    alt="Emory University Logo" 
+    class="mt-4 w-48 md:w-60 max-h-32 md:max-h-40 object-contain"
+    />
+
+    <!-- Typed Text -->
+    <h2 class="mt-6 text-4xl font-bold">
+      I work on
+      <span
+        id="typed-text"
+        class="bg-gradient-to-r from-orange-500 via-yellow-500 to-orange-500 bg-clip-text text-transparent"
+      ></span>
+    </h2>
   </section>
+
+    <!-- 3D MODELS -->
+    <section class="container mx-auto py-16 px-6">
+        <div
+        id="three-container"
+        class="w-full h-[500px] rounded-lg shadow-lg bg-black"
+        ></div>
+    </section>
+  
 
   <!-- ABOUT -->
-  <section class="container mx-auto py-16">
-    <h2 class="text-4xl font-bold mb-6 text-gradient-to-r from-indigo-400 to-purple-600 bg-clip-text text-transparent">
+  <section class="container mx-auto py-16 px-6">
+    <h2 class="text-4xl font-bold mb-6 bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent text-center md:text-left">
       About Me
     </h2>
-    <p class="text-center text-lg text-gray-200 max-w-3xl mx-auto">
-      I build scalable apps and digital experiences with React, Node.js, and WebGL.
-    </p>
+  
+    <div class="flex flex-col md:flex-row items-stretch gap-8">
+      <!-- Text -->
+      <div class="md:w-2/3 text-gray-200 text-lg">
+        <p>
+          I’m a Computer Science student at Emory University preparing for a career in medicine. I’m passionate about applying computational models to improve diagnostics, treatment decisions, and overall patient outcomes.
+        </p>
+        <p class="mt-4">
+          My research focuses on artificial intelligence in healthcare. I’m currently working with the Department of Pathology and Laboratory Medicine at Emory University Hospital on a deep learning project using flow cytometry data for multiple myeloma detection. I’m also developing a framework that leverages graph neural networks and attention-based mechanisms to predict breast cancer recurrence from whole-slide imaging.
+        </p>
+        <p class="mt-4">
+          I’m excited by the intersection of computer science and medicine and aim to contribute to a future where machine learning enhances clinical decision-making and personalized care.
+        </p>
+      </div>
+  
+      <!-- Image -->
+      <div class="md:w-1/2 flex justify-center md:justify-end">
+        <img 
+          src="assets/images/thomas.JPG" 
+          alt="Thomas Ma" 
+          class="rounded-lg shadow-lg w-full max-h-64 md:max-h-[500px] object-cover"
+        />
+      </div>
+    </div>
   </section>
+  
+  
 
-  <h2 class="text-6xl font-bold">
-    I build&nbsp;
-    <span
-      id="typed-text"
-      class="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent"
-    ></span>
-  </h2>  
-
-  <!-- PAPERS / PUBLICATIONS -->
-  <section class="container mx-auto py-16">
-    <h2 class="text-4xl font-bold mb-6 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
+  <!-- PAPERS -->
+  <section class="container mx-auto py-16 px-6">
+    <h2 class="text-4xl font-bold mb-6 bg-gradient-to-r from-yellow-500 to-yellow-500 bg-clip-text text-transparent">
       Publications & Papers
     </h2>
     <ul class="space-y-4 text-gray-200">
       <li>
-        <a href="#" class="hover:text-white font-semibold">Title of Paper #1</a> — Journal of Awesome Research
+        <a href="#" class="font-semibold hover:text-white">
+          Title of Paper #1
+        </a> — Journal of Awesome Research
       </li>
       <li>
-        <a href="#" class="hover:text-white font-semibold">Title of Paper #2</a> — Conference XYZ
+        <a href="#" class="font-semibold hover:text-white">
+          Title of Paper #2
+        </a> — Conference XYZ
       </li>
       <li>
-        <a href="#" class="hover:text-white font-semibold">Title of Paper #3</a> — Workshop on Web Tech
+        <a href="#" class="font-semibold hover:text-white">
+          Title of Paper #3
+        </a> — Workshop on Web Tech
       </li>
     </ul>
   </section>
 
+<!-- EXPERIENCE / TIMELINE -->
+<section class="w-full py-16 px-6">
+    <h2 class="text-4xl font-bold mb-12 bg-gradient-to-r from-blue-500 to-blue-500 bg-clip-text text-transparent text-center md:text-left">
+      Experience
+    </h2>
+  
+    <div class="relative max-w-6xl mx-auto">
+      <!-- Vertical line -->
+      <div class="absolute left-1/2 top-0 transform -translate-x-1/2 w-1 h-full bg-gray-600"></div>
+  
+      <!-- Timeline items -->
+      <div class="space-y-16 relative">
+        <!-- Item 1 (Left) -->
+        <div class="relative flex md:justify-start md:items-center">
+          <!-- Node -->
+          <div class="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-purple-500 rounded-full border-2 border-white z-10"></div>
+          <!-- Text box -->
+          <div class="md:w-5/12 bg-purple-500 bg-opacity-80 p-4 rounded-md text-white md:mr-8 md:text-right">
+            <h3 class="text-xl font-semibold">AI Research Intern</h3>
+            <p class="text-sm text-white/70">Emory University | Jun 2024 - Aug 2024</p>
+            <p class="mt-2">
+              Developed deep learning pipelines for flow cytometry data analysis and contributed to predictive models for multiple myeloma detection.
+            </p>
+          </div>
+        </div>
+  
+        <!-- Item 2 (Right) -->
+        <div class="relative flex md:justify-end md:items-center">
+          <!-- Node -->
+          <div class="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-pink-500 rounded-full border-2 border-white z-10"></div>
+          <!-- Text box -->
+          <div class="md:w-5/12 bg-pink-500 bg-opacity-80 p-4 rounded-md text-white md:ml-8 md:text-left">
+            <h3 class="text-xl font-semibold">Software Engineering Intern</h3>
+            <p class="text-sm text-white/70">TechCorp | Jan 2024 - May 2024</p>
+            <p class="mt-2">
+              Built full-stack web applications using React and Node.js, improving internal reporting workflows by 30%.
+            </p>
+          </div>
+        </div>
+  
+        <!-- Item 3 (Left) -->
+        <div class="relative flex md:justify-start md:items-center">
+          <!-- Node -->
+          <div class="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-yellow-500 rounded-full border-2 border-white z-10"></div>
+          <!-- Text box -->
+          <div class="md:w-5/12 bg-yellow-500 bg-opacity-80 p-4 rounded-md text-white md:mr-8 md:text-right">
+            <h3 class="text-xl font-semibold">Research Assistant</h3>
+            <p class="text-sm text-white/70">Emory University | Sep 2023 - Dec 2023</p>
+            <p class="mt-2">
+              Assisted in the development of graph neural network models for predicting breast cancer recurrence from histopathology images.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
   <!-- 3D MODELS -->
-  <section class="container mx-auto py-16">
-    <h2 class="text-4xl font-bold mb-6 bg-gradient-to-r from-yellow-400 to-red-500 bg-clip-text text-transparent">
+  <section class="container mx-auto py-16 px-6">
+    <h2 class="text-4xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">
       Interactive 3D Showcase
     </h2>
-    <div id="three-container" class="w-full h-[500px] rounded-lg shadow-lg"></div>
+    <div
+      id="three-container"
+      class="w-full h-[500px] rounded-lg shadow-lg bg-black"
+    ></div>
   </section>
 
-  <!-- PROJECTS CTA -->
+  <!-- CTA -->
   <section class="container mx-auto text-center py-12">
-    <button class="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-xl font-semibold rounded-lg hover:from-pink-500 hover:to-purple-500 transition">
+    <button
+      class="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-xl font-semibold rounded-lg hover:from-pink-500 hover:to-purple-500 transition"
+    >
       View Projects
     </button>
   </section>
 
+  <!-- Your JS LAST -->
   <script src="app.js"></script>
 </body>
 </html>

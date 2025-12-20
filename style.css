@@ -1,23 +1,31 @@
 /* Tailwind plus custom gradients */
 
+
 .text-gradient {
     background: linear-gradient(90deg, #ff8a00, #e52e71, #9b00e8);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   
-  /* Optional: Smooth scroll */
-  html {
-    scroll-behavior: smooth;
-  }
+/* Optional: Smooth scroll */
+html {
+scroll-behavior: smooth;
+}
   
-  /* Typed.js cursor */
+body {
+    background-color: #060318;
+}
+
+/* Typed.js cursor */
 .typed-cursor {
+    display: inline-block;
     font-size: 1em;
     margin-left: 2px;
-    color: #a855f7; /* purple-500 */
+    color: #ffffff;
     animation: blink 1s infinite;
-  }
+    transform: scaleX(0.3); /* makes it thin */
+}
+
   
   @keyframes blink {
     0%, 50%, 100% { opacity: 1; }
