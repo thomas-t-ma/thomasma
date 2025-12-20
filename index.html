@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thomas Ma | Portfolio</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+  <header>
+    <h1>Thomas Ma</h1>
+    <p>Machine Learning • Computer Vision • Research</p>
+    <nav>
+      <a href="#projects">Projects</a>
+      <a href="#research">Research</a>
+      <a href="#contact">Contact</a>
+      <a href="https://github.com/YOUR_GITHUB" target="_blank">GitHub</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2>Projects</h2>
+
+      <div class="project-card">
+        <div class="project-info">
+          <h3>3D Reconstruction Pipeline</h3>
+          <p>
+            COLMAP → point cloud filtering → mesh reconstruction.
+            Interactive 3D model below.
+          </p>
+          <ul>
+            <li>COLMAP</li>
+            <li>Computer Vision</li>
+            <li>3D Geometry</li>
+          </ul>
+        </div>
+
+        <div class="model-viewer">
+          <canvas id="modelCanvas"></canvas>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-info">
+          <h3>BTC Price Prediction</h3>
+          <p>
+            PyTorch MLP vs linear regression baseline for time-series forecasting.
+          </p>
+          <a href="https://github.com/YOUR_GITHUB/BTC-prediction" target="_blank">
+            View Code →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section id="research">
+      <h2>Research</h2>
+
+      <div class="paper">
+        <h3>Deep Learning for Flow Cytometry Analysis</h3>
+        <p>
+          Explores population-aware modeling of high-event flow cytometry files.
+        </p>
+        <a href="assets/papers/paper1.pdf" target="_blank">Read PDF →</a>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:thomas@example.com">thomas@example.com</a></p>
+      <p>GitHub: <a href="https://github.com/YOUR_GITHUB">github.com/YOUR_GITHUB</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Thomas Ma</p>
+  </footer>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
