@@ -70,12 +70,23 @@
       GitHub
     </a>
 
+    <a href="https://www.linkedin.com/in/thomas-t-ma" target="_blank"
+   class="relative px-6 py-2 rounded-full font-semibold
+          bg-gradient-to-r from-sky-500 to-blue-600
+          transition transform hover:scale-105
+          before:absolute before:inset-0 before:rounded-full
+          before:bg-gradient-to-r before:from-sky-400 before:to-blue-500
+          before:blur-xl before:opacity-0 hover:before:opacity-70
+          before:-z-10">
+      LinkedIn
+    </a>
+
     <a href="#papers"
        class="relative px-6 py-2 rounded-full font-semibold
-              bg-gradient-to-r from-yellow-500 to-orange-500
+              bg-gradient-to-r from-yellow-500 to-amber-500
               transition transform hover:scale-105
               before:absolute before:inset-0 before:rounded-full
-              before:bg-gradient-to-r before:from-yellow-400 before:to-orange-600
+              before:bg-gradient-to-r before:from-yellow-400 before:to-amber-600
               before:blur-xl before:opacity-0 hover:before:opacity-70
               before:-z-10">
       Research
@@ -83,10 +94,10 @@
 
     <a href="#projects"
        class="relative px-6 py-2 rounded-full font-semibold
-              bg-gradient-to-r from-cyan-500 to-green-500
+              bg-gradient-to-r from-indigo-500 to-blue-500
               transition transform hover:scale-105
               before:absolute before:inset-0 before:rounded-full
-              before:bg-gradient-to-r before:from-cyan-400 before:to-green-600
+              before:bg-gradient-to-r before:from-indigo-400 before:to-blue-600
               before:blur-xl before:opacity-0 hover:before:opacity-70
               before:-z-10">
       Projects
@@ -94,10 +105,10 @@
 
     <a href="#experience"
        class="relative px-6 py-2 rounded-full font-semibold
-              bg-gradient-to-r from-purple-500 to-indigo-500
+              bg-gradient-to-r from-orange-500 to-red-500
               transition transform hover:scale-105
               before:absolute before:inset-0 before:rounded-full
-              before:bg-gradient-to-r before:from-purple-400 before:to-indigo-600
+              before:bg-gradient-to-r before:from-orange-400 before:to-red-600
               before:blur-xl before:opacity-0 hover:before:opacity-70
               before:-z-10">
       Experience
@@ -105,10 +116,10 @@
 
     <a href="#hobbies"
        class="relative px-6 py-2 rounded-full font-semibold
-              bg-gradient-to-r from-pink-500 to-red-500
+              bg-gradient-to-r from-pink-500 to-purple-500
               transition transform hover:scale-105
               before:absolute before:inset-0 before:rounded-full
-              before:bg-gradient-to-r before:from-pink-400 before:to-red-600
+              before:bg-gradient-to-r before:from-pink-400 before:to-purple-600
               before:blur-xl before:opacity-0 hover:before:opacity-70
               before:-z-10">
       Hobbies
@@ -118,10 +129,14 @@
 
   <!-- 3D MODELS -->
   <section class="container mx-auto py-16 px-6">
-      <div
+      <!-- <div
       id="three-container-teaser"
       class="w-full h-[500px] rounded-lg shadow-lg bg-black"
-      ></div>
+      ></div> -->
+
+      <div>
+        <img src="assets/images/woodruff-circle.png">
+      </div>
   </section>
 
   <!-- ABOUT -->
@@ -158,7 +173,7 @@
 <!-- PAPERS -->
 <section id="papers" class="container mx-auto py-20 px-6">
   <h2 class="text-4xl font-bold mb-12 bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent">
-    Publications & Papers
+    Research
   </h2>
 
   <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -166,7 +181,32 @@
     <!-- Paper Card -->
     <div class="tilt-card bg-white/5 backdrop-blur-lg rounded-xl p-6
                 transition shadow-lg hover:shadow-yellow-500/40">
-      <img src="sample.png"
+      <img src="assets/images/black.jpg"
+           alt="Preview image"
+           class="h-40 w-full object-cover rounded-lg mb-4" />
+
+      <h3 class="text-xl font-semibold">
+        Improved Facial Tracking
+      </h3>
+
+      <p class="text-sm text-gray-400 mt-1">
+        Computer Vision · Planning
+      </p>
+
+      <p class="mt-3 text-gray-300"></p>
+
+      <a href="assets/papers/Computer_Vision.pdf" target="_blank"
+         class="inline-block mt-4 text-sm font-semibold
+                bg-gradient-to-r from-yellow-500 to-orange-500
+                bg-clip-text text-transparent hover:underline">
+        View PDF →
+      </a>
+    </div>
+
+    <!-- Paper Card -->
+    <div class="tilt-card bg-white/5 backdrop-blur-lg rounded-xl p-6
+                transition shadow-lg hover:shadow-yellow-500/40">
+      <img src="assets/images/flow-cytometry.webp"
            alt="Preview image"
            class="h-40 w-full object-cover rounded-lg mb-4" />
 
@@ -190,8 +230,8 @@
 
     <!-- Paper Card -->
     <div class="tilt-card bg-white/5 backdrop-blur-lg rounded-xl p-6
-                transition shadow-lg hover:shadow-orange-500/40">
-      <img src="sample.png"
+                transition shadow-lg hover:shadow-yellow-500/40">
+      <img src="assets/images/biospecimen-whole-slide-image-1.png"
            alt="Preview image"
            class="h-40 w-full object-cover rounded-lg mb-4" />
 
@@ -206,31 +246,6 @@
       <p class="mt-3 text-gray-300">Created a novel Gated Fusion hybrid model (Graph Transformer + Hypergraph Neural Network classifier) and implemented whole-slide image data and clinicopathologic metadata compatibility to predict recurrence ris</p>
 
       <a href="assets/papers/HELP - Final Report.pdf" target="_blank"
-         class="inline-block mt-4 text-sm font-semibold
-                bg-gradient-to-r from-yellow-500 to-orange-500
-                bg-clip-text text-transparent hover:underline">
-        View PDF →
-      </a>
-    </div>
-
-    <!-- Paper Card -->
-    <div class="tilt-card bg-white/5 backdrop-blur-lg rounded-xl p-6
-                transition shadow-lg hover:shadow-red-500/40">
-      <img src="sample.png"
-           alt="Preview image"
-           class="h-40 w-full object-cover rounded-lg mb-4" />
-
-      <h3 class="text-xl font-semibold">
-        Emory2MC: 3D Mesh Reconstruction and Voxel Rendering of Emory University in Minecraft
-      </h3>
-
-      <p class="text-sm text-gray-400 mt-1">
-         · Ongoing
-      </p>
-
-      <p class="mt-3 text-gray-300"></p>
-
-      <a href="assets/papers/Computer_Vision.pdf" target="_blank"
          class="inline-block mt-4 text-sm font-semibold
                 bg-gradient-to-r from-yellow-500 to-orange-500
                 bg-clip-text text-transparent hover:underline">
@@ -254,16 +269,16 @@
     <div class="tilt-card bg-white/5 backdrop-blur-lg rounded-xl p-6
                 transition shadow-lg hover:shadow-blue-500/40">
 
-      <img src="sample.png"
+      <img src="assets/images/black.jpg"
            alt="Project preview"
            class="h-40 w-full object-cover rounded-lg mb-4" />
 
       <h3 class="text-xl font-semibold">
-        Multimodal Cancer Risk Prediction
+        Human Avatar from Gaussian Splatting in Virtual Reality with AI Simulated Movements and LLM Feedback
       </h3>
 
       <p class="text-sm text-gray-400 mt-1">
-        PyTorch · GNNs · Medical Imaging
+        Computer Vision · Planning
       </p>
     
       <p class="mt-3 text-gray-300"></p>
@@ -282,13 +297,49 @@
       </div>
     </div>
 
-    <!-- PROJECT CARD (3D MODEL PREVIEW) -->
+    <!-- PROJECT CARD (IMAGE PREVIEW) -->
     <div class="tilt-card bg-white/5 backdrop-blur-lg rounded-xl p-6
-                transition shadow-lg hover:shadow-indigo-500/40">
+                transition shadow-lg hover:shadow-blue-500/40">
+
+      <img src="assets/images/black.jpg"
+           alt="Project preview"
+           class="h-40 w-full object-cover rounded-lg mb-4" />
+
+      <h3 class="text-xl font-semibold">
+        Horror Game
+      </h3>
+
+      <p class="text-sm text-gray-400 mt-1">
+        Game · Planning
+      </p>
+
+      <p class="mt-3 text-gray-300"></p>
+
+      <div class="flex gap-4 mt-4 text-sm font-semibold">
+        <a href="#" target="_blank"
+           class="bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent hover:underline">
+          View PDF →
+        </a>
+
+        <a href="#" target="_blank"
+           class="bg-gradient-to-r from-gray-400 to-gray-200 bg-clip-text text-transparent hover:underline">
+          GitHub →
+        </a>
+      </div>
+    </div>
+
+        <!-- PROJECT CARD (3D MODEL PREVIEW) -->
+    <div class="tilt-card bg-white/5 backdrop-blur-lg rounded-xl p-6
+                transition shadow-lg hover:shadow-blue-500/40">
 
       <!-- 3D CANVAS -->
-      <div id="project-3d-preview"
-           class="h-40 w-full rounded-lg mb-4 bg-black cursor-grab"></div>
+      <!-- <div id="project-3d-preview"
+           class="h-40 w-full rounded-lg mb-4 bg-black cursor-grab"></div> -->
+
+      <img src="assets/images/E2MC.png"
+           alt="Project preview"
+           class="h-40 w-full object-cover rounded-lg mb-4" />
+
 
       <h3 class="text-xl font-semibold">
         Emory2MC: 3D Mesh Reconstruction and Voxel Rendering of Emory University in Minecraft
@@ -315,44 +366,13 @@
       </div>
     </div>
 
-    <!-- PROJECT CARD (IMAGE PREVIEW) -->
-    <div class="tilt-card bg-white/5 backdrop-blur-lg rounded-xl p-6
-                transition shadow-lg hover:shadow-cyan-500/40">
-
-      <img src="sample.png"
-           alt="Project preview"
-           class="h-40 w-full object-cover rounded-lg mb-4" />
-
-      <h3 class="text-xl font-semibold">
-        Neural Signal Visualization Tool
-      </h3>
-
-      <p class="text-sm text-gray-400 mt-1">
-        Three.js · Interactive UI
-      </p>
-
-      <p class="mt-3 text-gray-300"></p>
-
-      <div class="flex gap-4 mt-4 text-sm font-semibold">
-        <a href="#" target="_blank"
-           class="bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent hover:underline">
-          View PDF →
-        </a>
-
-        <a href="#" target="_blank"
-           class="bg-gradient-to-r from-gray-400 to-gray-200 bg-clip-text text-transparent hover:underline">
-          GitHub →
-        </a>
-      </div>
-    </div>
-
   </div>
 </section>
 
 
 <!-- EXPERIENCE CARDS -->
 <section id="experience" class="container mx-auto py-20 px-6">
-  <h2 class="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+  <h2 class="text-4xl font-bold mb-12 bg-gradient-to-r from-orange-400 to-yellow-500 bg-clip-text text-transparent">
     Experience
   </h2>
 
@@ -360,9 +380,13 @@
 
     <!-- CARD -->
     <div class="tilt-card bg-white/5 backdrop-blur-lg rounded-xl p-6
-            transition shadow-lg hover:shadow-purple-500/40">
+            transition shadow-lg hover:shadow-orange-500/40">
       <div class="h-40 bg-gray-800 rounded-lg mb-4 flex items-center justify-center text-gray-400">
-        Image Placeholder
+              
+        <img src="assets/images/mosaic.png"
+           alt="Project preview"
+           class="h-40 w-full object-cover rounded-lg mb-4" />
+
       </div>
       <h3 class="text-xl font-semibold">Medical Scribe</h3>
       <p class="text-sm text-gray-400">Mosaic Health Center | Oct. 2025 - Current</p>
@@ -372,9 +396,13 @@
     </div>
 
     <div class="tilt-card bg-white/5 backdrop-blur-lg rounded-xl p-6
-            transition shadow-lg hover:shadow-purple-500/40">
+            transition shadow-lg hover:shadow-orange-500/40">
       <div class="h-40 bg-gray-800 rounded-lg mb-4 flex items-center justify-center text-gray-400">
-        Image Placeholder
+      
+        <img src="assets/images/chizu.png"
+           alt="Project preview"
+           class="h-40 w-full object-cover rounded-lg mb-4" />
+
       </div>
       <h3 class="text-xl font-semibold">Engineering Intern</h3>
       <p class="text-sm text-gray-400">Chizu Electric Co., LTD. | June 2024</p>
@@ -384,9 +412,13 @@
     </div>
 
     <div class="tilt-card bg-white/5 backdrop-blur-lg rounded-xl p-6
-            transition shadow-lg hover:shadow-purple-500/40">
+            transition shadow-lg hover:shadow-orange-500/40">
       <div class="h-40 bg-gray-800 rounded-lg mb-4 flex items-center justify-center text-gray-400">
-        Image Placeholder
+      
+        <img src="assets/images/IMG_0492.JPG"
+           alt="Project preview"
+           class="h-40 w-full object-cover rounded-lg mb-4" />
+
       </div>
       <h3 class="text-xl font-semibold">Study Abroad</h3>
       <p class="text-sm text-gray-400">Kansai Gaidai University | Jan. 2024 - June 2024</p>
@@ -398,15 +430,247 @@
   </div>
 </section>
 
+<section id="conferences" class="container mx-auto py-20 px-6">
+  <h2 class="text-4xl font-bold mb-12 bg-gradient-to-r from-green-400 to-yellow-500 bg-clip-text text-transparent">
+    Conferences & Abstracts
+  </h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+    <!-- CARD -->
+    <div class="tilt-card bg-white/5 backdrop-blur-lg rounded-xl p-6
+            transition shadow-lg hover:shadow-green-500/40">
+      <div class="h-40 bg-gray-800 rounded-lg mb-4 flex items-center justify-center text-gray-400">
+
+      <img src="assets/images/aimed.jpg"
+           alt="Project preview"
+           class="h-40 w-full object-cover rounded-lg mb-4" />
+
+      </div>
+      <h3 class="text-xl font-semibold">AIMed26</h3>
+      <p class="text-sm text-gray-400">Orlando, FL | Nov. 10-13, 2026</p>
+      <p class="mt-3 text-gray-300">
+        Abstract TBA
+      </p>
+      <div class="flex gap-4 mt-4 text-sm font-semibold">
+        <a href="https://www.aimed26.com/" target="_blank"
+           class="bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent hover:underline">
+          View Conference Site →
+        </a>
+      </div>
+    </div>
+
+    <div class="tilt-card bg-white/5 backdrop-blur-lg rounded-xl p-6
+            transition shadow-lg hover:shadow-green-500/40">
+      <div class="h-40 bg-gray-800 rounded-lg mb-4 flex items-center justify-center text-gray-400">
+
+      <img src="assets/images/ceb.png"
+           alt="Project preview"
+           class="h-40 w-full object-cover rounded-lg mb-4" />
+
+      </div>
+      <h3 class="text-xl font-semibold">CEB</h3>
+      <p class="text-sm text-gray-400">Boston, MA | April 13-15, 2026</p>
+      <p class="mt-3 text-gray-300">
+        Bradykinin-Induced Pulmonary Angioedema: A Curable Form of ARDS in COVID-19 Patients?
+      </p>
+      <div class="flex gap-4 mt-4 text-sm font-semibold">
+        <a href="https://cellexpbiol.unitedscientificgroup.org/" target="_blank"
+           class="bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent hover:underline">
+          View Conference Site →
+        </a>
+      </div>
+    </div>
+
+    <div class="tilt-card bg-white/5 backdrop-blur-lg rounded-xl p-6
+            transition shadow-lg hover:shadow-green-500/40">
+      <div class="h-40 bg-gray-800 rounded-lg mb-4 flex items-center justify-center text-gray-400">
+
+      <img src="assets/images/AIMED-SanDiego-Sunday-YAPhoto-41.jpg"
+           alt="Project preview"
+           class="h-40 w-full object-cover rounded-lg mb-4" />
+
+      </div>
+      <h3 class="text-xl font-semibold">AIMed25</h3>
+      <p class="text-sm text-gray-400">San Diego | Nov. 9-12, 2025</p>
+      <p class="mt-3 text-gray-300">
+        VignetteGen: Leveraging Large Language Models and Generative Adversarial Networks for Holistic Synthetic Medical Scenarios with Imaging
+      </p>
+      <div class="flex gap-4 mt-4 text-sm font-semibold">
+        <a href="assets/papers/VignetteGen_AIMed25_Abstract.pdf" target="_blank"
+           class="bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent hover:underline">
+          View PDF →
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="container mx-auto py-24 px-6">
+  <h2 class="text-4xl font-bold mb-12 text-center
+             bg-gradient-to-r from-gray-300 to-gray-500
+             bg-clip-text text-transparent">
+    Contact
+  </h2>
+
+  <div class="max-w-3xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- EMAIL CARD -->
+      <a href="mailto:thomas.ma050804@gmail.com"
+         class="group bg-white/5 backdrop-blur-lg rounded-xl p-6
+                flex items-center gap-4
+                transition shadow-lg hover:shadow-blue-500/40
+                hover:bg-white/10">
+
+        <!-- Icon -->
+        <div class="p-3 rounded-lg bg-blue-500/20 text-blue-400">
+          <svg xmlns="http://www.w3.org/2000/svg"
+               class="w-6 h-6"
+               fill="none"
+               viewBox="0 0 24 24"
+               stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              d="M21 8l-9 6-9-6m18 0a2 2 0 00-2-2H5a2 2 0 00-2 2m18 0v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8"/>
+          </svg>
+        </div>
+
+        <!-- Text -->
+        <div>
+          <p class="text-sm text-gray-400">Email</p>
+          <p class="text-lg font-medium
+                    bg-gradient-to-r from-blue-400 to-indigo-500
+                    bg-clip-text text-transparent">
+            thomas.ma050804@gmail.com
+          </p>
+        </div>
+      </a>
+
+      <!-- PHONE CARD -->
+      <a href="tel:+16786727957"
+         class="group bg-white/5 backdrop-blur-lg rounded-xl p-6
+                flex items-center gap-4
+                transition shadow-lg hover:shadow-emerald-500/40
+                hover:bg-white/10">
+
+        <!-- Icon -->
+        <div class="p-3 rounded-lg bg-emerald-500/20 text-emerald-400">
+          <svg xmlns="http://www.w3.org/2000/svg"
+               class="w-6 h-6"
+               fill="none"
+               viewBox="0 0 24 24"
+               stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              d="M3 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H7a11 11 0 005 5v-1a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-1C9.163 21 3 14.837 3 7V5z"/>
+          </svg>
+        </div>
+
+        <!-- Text -->
+        <div>
+          <p class="text-sm text-gray-400">Phone</p>
+          <p class="text-lg font-medium
+                    bg-gradient-to-r from-green-400 to-emerald-500
+                    bg-clip-text text-transparent">
+            +1 (678) 672-7957
+          </p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
 <!-- HOBBIES -->
-<section id="hobbies" class="container mx-auto py-16 px-6">
-  <h2 class="text-4xl font-bold bg-gradient-to-r from-pink-500 to-red-500 bg-clip-text text-transparent">
+<section id="hobbies" class="container mx-auto py-20 px-6">
+  <h2 class="text-4xl font-bold mb-12 bg-gradient-to-r from-purple-500 to-red-500 bg-clip-text text-transparent">
     Hobbies
   </h2>
-  <p class="text-gray-300 mt-4">
-    3D graphics, machine learning research, fitness, music production,
-    and interactive visualization.
-  </p>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+
+    <!-- Gallery Item -->
+    <div class="tilt-card overflow-hidden rounded-xl bg-white/5 backdrop-blur-lg
+                transition shadow-lg hover:shadow-purple-500/40">
+      <img
+        src="assets/images/hobbies/EAGLE CON-29.jpg"
+        alt=""
+        class="w-full h-56 object-cover hover:scale-105 transition-transform duration-300"
+      />
+    </div>
+
+    <!-- Gallery Item -->
+    <div class="tilt-card overflow-hidden rounded-xl bg-white/5 backdrop-blur-lg
+                transition shadow-lg hover:shadow-red-500/40">
+      <img
+        src="assets/images/hobbies/BTS.jpg"
+        alt=""
+        class="w-full h-56 object-cover hover:scale-105 transition-transform duration-300"
+      />
+    </div>
+
+    <!-- Gallery Item -->
+    <div class="tilt-card overflow-hidden rounded-xl bg-white/5 backdrop-blur-lg
+                transition shadow-lg hover:shadow-orange-500/40">
+      <img
+        src="assets/images/hobbies/IMG_6449.JPG"
+        alt=""
+        class="w-full h-56 object-cover hover:scale-105 transition-transform duration-300"
+      />
+    </div>
+
+    <!-- Gallery Item -->
+    <div class="tilt-card overflow-hidden rounded-xl bg-white/5 backdrop-blur-lg
+                transition shadow-lg hover:shadow-pink-500/40">
+      <img
+        src="assets/images/hobbies/IMG_5731.JPG"
+        alt=""
+        class="w-full h-56 object-cover hover:scale-105 transition-transform duration-300"
+      />
+    </div>
+
+    <!-- Gallery Item -->
+    <div class="tilt-card overflow-hidden rounded-xl bg-white/5 backdrop-blur-lg
+                transition shadow-lg hover:shadow-indigo-500/40">
+      <img
+        src="assets/images/hobbies/IMG_2628.jpg"
+        alt=""
+        class="w-full h-56 object-cover hover:scale-105 transition-transform duration-300"
+      />
+    </div>
+
+    <!-- Gallery Item -->
+    <div class="tilt-card overflow-hidden rounded-xl bg-white/5 backdrop-blur-lg
+                transition shadow-lg hover:shadow-cyan-500/40">
+      <img
+        src="assets/images/hobbies/IMG_3630.jpg"
+        alt=""
+        class="w-full h-56 object-cover hover:scale-105 transition-transform duration-300"
+      />
+    </div>
+
+    <!-- Gallery Item -->
+    <div class="tilt-card overflow-hidden rounded-xl bg-white/5 backdrop-blur-lg
+                transition shadow-lg hover:shadow-cyan-500/40">
+      <img
+        src="assets/images/hobbies/IMG_7811.PNG"
+        alt=""
+        class="w-full h-56 object-cover hover:scale-105 transition-transform duration-300"
+      />
+    </div>
+
+    <!-- Gallery Item -->
+    <div class="tilt-card overflow-hidden rounded-xl bg-white/5 backdrop-blur-lg
+                transition shadow-lg hover:shadow-cyan-500/40">
+      <img
+        src="assets/images/hobbies/Donut v1.png"
+        alt=""
+        class="w-full h-56 object-cover hover:scale-105 transition-transform duration-300"
+      />
+    </div>
+
+  </div>
 </section>
 
 <script src="app.js"></script>

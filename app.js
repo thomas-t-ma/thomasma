@@ -4,9 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
   =============================== */
   new Typed("#typed-text", {
     strings: [
-      "cancer diagnosis models",
+      "medicine",
+      "artificial intelligence",
       "machine learning",
       "deep learning",
+      "cancer diagnosis models",
       "computer vision",
     ],
     typeSpeed: 60,
