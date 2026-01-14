@@ -138,5 +138,5 @@ function initInteractive3DPreview(containerId, modelPath) {
   /* ===============================
      Init Project 3D Card
   =============================== */
-  initInteractive3DPreview("project-3d-preview", "assets/models/small_emory.glb");
+  // initInteractive3DPreview("project-3d-preview", "assets/models/small_emory.glb");
 });
