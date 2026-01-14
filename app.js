@@ -1,6 +1,4 @@
-import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.155/build/three.module.js";
-import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.155/examples/jsm/loaders/GLTFLoader.js";
-
+document.addEventListener("DOMContentLoaded", () => {
   /* ===============================
      Typed.js (Hero Section)
   =============================== */
@@ -45,9 +43,6 @@ function initInteractive3DPreview(containerId, modelPath) {
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.1;
   renderer.physicallyCorrectLights = true;
-
-  const hemi = new THREE.HemisphereLight(0xffffff, 0x444444, 1.2);
-  scene.add(hemi);
   
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(container.clientWidth, container.clientHeight);
@@ -65,6 +60,10 @@ function initInteractive3DPreview(containerId, modelPath) {
   scene.add(rimLight);
 
   /* ---------------- Load GLB ---------------- */
+  if (!THREE.GLTFLoader) {
+    console.error("GLTFLoader failed to load");
+    return;
+  }
   const loader = new THREE.GLTFLoader();
   let model;
 
@@ -137,4 +136,5 @@ function initInteractive3DPreview(containerId, modelPath) {
   /* ===============================
      Init Project 3D Card
   =============================== */
-  initInteractive3DPreview("project-3d-preview", "assets/models/esc_emory.glb");
+  initInteractive3DPreview("project-3d-preview", "assets/models/small_emory.glb");
+});
