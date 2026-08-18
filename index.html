@@ -1,680 +1,324 @@
 <!DOCTYPE html>
-<html lang="en" class="bg-black">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#070716" />
   <title>Thomas Ma | Portfolio</title>
 
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <style>
-  .tilt-card {
-    transform-style: preserve-3d;
-    perspective: 1000px;
-  }
-  .tilt-card:hover {
-    transform: rotateX(4deg) rotateY(-4deg) scale(1.03);
-  }
-</style>
-
-
-  <!-- Three.js -->
-  <script src="https://threejs.org/build/three.min.js"></script>
-
-  <script src="https://cdn.jsdelivr.net/npm/three@0.155/examples/js/loaders/GLTFLoader.js"></script>
-
-  <!-- Typed.js -->
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
-
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js" defer></script>
   <link rel="stylesheet" href="style.css" />
 </head>
 
-<body class="text-white scroll-smooth">
+<body>
+  <div class="page-glow page-glow-one" aria-hidden="true"></div>
+  <div class="page-glow page-glow-two" aria-hidden="true"></div>
 
-  <div class="max-w-6xl mx-auto px-6">
+  <!-- Optional decorative photos are inserted here by app.js only when EXTRA_PHOTOS is populated. -->
+  <div id="extra-photo-layer" class="extra-photo-layer" aria-hidden="true"></div>
 
-<!-- HERO -->
-<section class="flex flex-col items-center text-center pt-16">
-  <h1 class="text-7xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
-    Thomas Ma
-  </h1>
+  <header class="site-header glass-reactive">
+    <a class="brand" href="#top" aria-label="Thomas Ma home">TM</a>
 
-  <p class="mt-4 text-3xl font-semibold">
-    Artificial Intelligence Researcher & Future Medical Student
-  </p>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span><span></span>
+      <span class="sr-only">Toggle navigation</span>
+    </button>
 
-  <img src="assets/images/emory-logo.png"
-       class="mt-4 w-48 md:w-60 object-contain" />
+    <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#conferences">Conferences</a>
+      <a href="#hobbies">Hobbies</a>
+      <a href="#contact">Contact</a>
+      <button id="extra-photo-toggle" class="nav-photo-toggle" type="button" aria-pressed="false" hidden>Photos</button>
+    </nav>
+  </header>
 
-  <!-- Typed Text -->
-  <h2 class="mt-6 text-4xl font-bold">
-    I work on
-    <span id="typed-text"
-      class="bg-gradient-to-r from-orange-500 via-yellow-500 to-orange-500 bg-clip-text text-transparent">
-    </span>
-  </h2>
+  <main id="top" class="site-shell">
+    <!-- HERO -->
+    <section class="hero section-pad">
+      <div class="hero-copy reveal">
+        <h1 class="hero-name">Thomas Ma</h1>
+        <p class="hero-role">Artificial Intelligence Researcher &amp; Future Medical Student</p>
 
-  <!-- PILL BUTTONS WITH GLOW -->
-  <div class="mt-8 flex flex-wrap justify-center gap-4">
-
-    <!-- BUTTON TEMPLATE -->
-    <a href="https://github.com/thomas-t-ma" target="_blank"
-       class="relative px-6 py-2 rounded-full font-semibold
-              bg-gradient-to-r from-gray-700 to-gray-900
-              transition transform hover:scale-105
-              before:absolute before:inset-0 before:rounded-full
-              before:bg-gradient-to-r before:from-gray-500 before:to-gray-800
-              before:blur-xl before:opacity-0 hover:before:opacity-70
-              before:-z-10">
-      GitHub
-    </a>
-
-    <a href="https://www.linkedin.com/in/thomas-t-ma" target="_blank"
-   class="relative px-6 py-2 rounded-full font-semibold
-          bg-gradient-to-r from-sky-500 to-blue-600
-          transition transform hover:scale-105
-          before:absolute before:inset-0 before:rounded-full
-          before:bg-gradient-to-r before:from-sky-400 before:to-blue-500
-          before:blur-xl before:opacity-0 hover:before:opacity-70
-          before:-z-10">
-      LinkedIn
-    </a>
-
-    <a href="#papers"
-       class="relative px-6 py-2 rounded-full font-semibold
-              bg-gradient-to-r from-yellow-500 to-amber-500
-              transition transform hover:scale-105
-              before:absolute before:inset-0 before:rounded-full
-              before:bg-gradient-to-r before:from-yellow-400 before:to-amber-600
-              before:blur-xl before:opacity-0 hover:before:opacity-70
-              before:-z-10">
-      Research
-    </a>
-
-    <a href="#projects"
-       class="relative px-6 py-2 rounded-full font-semibold
-              bg-gradient-to-r from-indigo-500 to-blue-500
-              transition transform hover:scale-105
-              before:absolute before:inset-0 before:rounded-full
-              before:bg-gradient-to-r before:from-indigo-400 before:to-blue-600
-              before:blur-xl before:opacity-0 hover:before:opacity-70
-              before:-z-10">
-      Projects
-    </a>
-
-    <a href="#experience"
-       class="relative px-6 py-2 rounded-full font-semibold
-              bg-gradient-to-r from-orange-500 to-red-500
-              transition transform hover:scale-105
-              before:absolute before:inset-0 before:rounded-full
-              before:bg-gradient-to-r before:from-orange-400 before:to-red-600
-              before:blur-xl before:opacity-0 hover:before:opacity-70
-              before:-z-10">
-      Experience
-    </a>
-
-    <a href="#hobbies"
-       class="relative px-6 py-2 rounded-full font-semibold
-              bg-gradient-to-r from-pink-500 to-purple-500
-              transition transform hover:scale-105
-              before:absolute before:inset-0 before:rounded-full
-              before:bg-gradient-to-r before:from-pink-400 before:to-purple-600
-              before:blur-xl before:opacity-0 hover:before:opacity-70
-              before:-z-10">
-      Hobbies
-    </a>
-  </div>
-</section>
-
-  <!-- 3D MODELS -->
-  <section class="container mx-auto py-16 px-6">
-      <!-- <div
-      id="three-container-teaser"
-      class="w-full h-[500px] rounded-lg shadow-lg bg-black"
-      ></div> -->
-
-      <div>
-        <img src="assets/images/woodruff-circle.png">
-      </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="container mx-auto py-16 px-6">
-    <h2 class="text-4xl font-bold mb-6 bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent text-center md:text-left">
-      About Me
-    </h2>
-  
-    <div class="flex flex-col md:flex-row items-stretch gap-8">
-      <!-- Text -->
-      <div class="md:w-2/3 text-gray-200 text-lg">
-        <p>
-          I’m a Computer Science student at Emory University preparing for a career in medicine. I’m passionate about applying computational models to improve diagnostics, treatment decisions, and overall patient outcomes.
+        <p class="hero-typed">
+          I work on <span id="typed-text"></span>
         </p>
-        <p class="mt-4">
-          My research focuses on artificial intelligence in healthcare. I’m currently working with the Department of Pathology and Laboratory Medicine at Emory University Hospital on a deep learning project using flow cytometry data for multiple myeloma detection. I’m also developing a framework that leverages graph neural networks and attention-based mechanisms to predict breast cancer recurrence from whole-slide imaging.
-        </p>
-        <p class="mt-4">
-          I’m excited by the intersection of computer science and medicine and aim to contribute to a future where machine learning enhances clinical decision-making and personalized care.
-        </p>
-      </div>
-  
-      <!-- Image -->
-      <div class="md:w-1/2 flex justify-center md:justify-end">
-        <img 
-          src="assets/images/thomas.JPG" 
-          alt="Thomas Ma" 
-          class="rounded-lg shadow-lg w-full max-h-64 md:max-h-[500px] object-cover"
-        />
-      </div>
-    </div>
-  </section>
 
-<!-- PAPERS -->
-<section id="papers" class="container mx-auto py-20 px-6">
-  <h2 class="text-4xl font-bold mb-12 bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent">
-    Research
-  </h2>
-
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-    <!-- Paper Card -->
-    <div class="tilt-card bg-white/5 backdrop-blur-lg rounded-xl p-6
-                transition shadow-lg hover:shadow-yellow-500/40">
-      <img src="assets/images/black.jpg"
-           alt="Preview image"
-           class="h-40 w-full object-cover rounded-lg mb-4" />
-
-      <h3 class="text-xl font-semibold">
-        Improved Facial Tracking
-      </h3>
-
-      <p class="text-sm text-gray-400 mt-1">
-        Computer Vision · Planning
-      </p>
-
-      <p class="mt-3 text-gray-300"></p>
-
-      <a href="assets/papers/Computer_Vision.pdf" target="_blank"
-         class="inline-block mt-4 text-sm font-semibold
-                bg-gradient-to-r from-yellow-500 to-orange-500
-                bg-clip-text text-transparent hover:underline">
-        View PDF →
-      </a>
-    </div>
-
-    <!-- Paper Card -->
-    <div class="tilt-card bg-white/5 backdrop-blur-lg rounded-xl p-6
-                transition shadow-lg hover:shadow-yellow-500/40">
-      <img src="assets/images/flow-cytometry.webp"
-           alt="Preview image"
-           class="h-40 w-full object-cover rounded-lg mb-4" />
-
-      <h3 class="text-xl font-semibold">
-        AI Automation of Flow Cytometry to Identify Myeloma
-      </h3>
-
-      <p class="text-sm text-gray-400 mt-1">
-        Pathology · Completed
-      </p>
-
-      <p class="mt-3 text-gray-300">Developed a novel Branched Attention for Monoclonal Sensitivity (BAMS) model based on ABMIL for automated flow interpretations that outperformed classical ML, CNN, and ABMIL in AUROC and F1 in detecting abnormal cell populations, and introduced the novel application of deep learning models on flow data for myeloma detection.</p>
-
-      <a href="https://etd.library.emory.edu/concern/etds/bv73c2111" target="_blank"
-         class="inline-block mt-4 text-sm font-semibold
-                bg-gradient-to-r from-yellow-500 to-orange-500
-                bg-clip-text text-transparent hover:underline">
-        View on ETD →
-      </a>
-    </div>
-
-    <!-- Paper Card -->
-    <div class="tilt-card bg-white/5 backdrop-blur-lg rounded-xl p-6
-                transition shadow-lg hover:shadow-yellow-500/40">
-      <img src="assets/images/biospecimen-whole-slide-image-1.png"
-           alt="Preview image"
-           class="h-40 w-full object-cover rounded-lg mb-4" />
-
-      <h3 class="text-xl font-semibold">
-        Graphs HELP Predict Cancer: Multimodal GNNs for Cancer Recurrence Risk
-      </h3>
-
-      <p class="text-sm text-gray-400 mt-1">
-        Pathology · Ongoing
-      </p>
-            
-      <p class="mt-3 text-gray-300">Created a novel Gated Fusion hybrid model (Graph Transformer + Hypergraph Neural Network classifier) and implemented whole-slide image data and clinicopathologic metadata compatibility to predict recurrence risk.</p>
-
-      <a href="assets/papers/HELP - Final Report.pdf" target="_blank"
-         class="inline-block mt-4 text-sm font-semibold
-                bg-gradient-to-r from-yellow-500 to-orange-500
-                bg-clip-text text-transparent hover:underline">
-        View PDF →
-      </a>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- PROJECTS -->
-<section id="projects" class="container mx-auto py-20 px-6">
-  <h2 class="text-4xl font-bold mb-12 bg-gradient-to-r from-blue-500 to-indigo-500 bg-clip-text text-transparent">
-    Projects
-  </h2>
-
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-    <!-- PROJECT CARD (IMAGE PREVIEW) -->
-    <div class="tilt-card bg-white/5 backdrop-blur-lg rounded-xl p-6
-                transition shadow-lg hover:shadow-blue-500/40">
-
-      <img src="assets/images/black.jpg"
-           alt="Project preview"
-           class="h-40 w-full object-cover rounded-lg mb-4" />
-
-      <h3 class="text-xl font-semibold">
-        AISHA: Artificial Intelligence-Simulated Human Avatar
-      </h3>
-
-      <p class="text-sm text-gray-400 mt-1">
-        Computer Vision · Planning
-      </p>
-    
-      <p class="mt-3 text-gray-300">Avatar from gaussian splatting with movement model for motion simulation, LLM for conversation, and VLM for visual-based response.</p>
-
-
-      <div class="flex gap-4 mt-4 text-sm font-semibold">
-        <a href="#" target="_blank"
-           class="bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent hover:underline">
-          View PDF →
-        </a>
-
-        <a href="#" target="_blank"
-           class="bg-gradient-to-r from-gray-400 to-gray-200 bg-clip-text text-transparent hover:underline">
-          GitHub →
-        </a>
-      </div>
-    </div>
-
-    <!-- PROJECT CARD (IMAGE PREVIEW) -->
-    <div class="tilt-card bg-white/5 backdrop-blur-lg rounded-xl p-6
-                transition shadow-lg hover:shadow-blue-500/40">
-
-      <img src="assets/images/black.jpg"
-           alt="Project preview"
-           class="h-40 w-full object-cover rounded-lg mb-4" />
-
-      <h3 class="text-xl font-semibold">
-        Horror Game
-      </h3>
-
-      <p class="text-sm text-gray-400 mt-1">
-        Game · Planning
-      </p>
-
-      <p class="mt-3 text-gray-300"></p>
-
-      <div class="flex gap-4 mt-4 text-sm font-semibold">
-        <a href="#" target="_blank"
-           class="bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent hover:underline">
-          View PDF →
-        </a>
-
-        <a href="#" target="_blank"
-           class="bg-gradient-to-r from-gray-400 to-gray-200 bg-clip-text text-transparent hover:underline">
-          GitHub →
-        </a>
-      </div>
-    </div>
-
-        <!-- PROJECT CARD (3D MODEL PREVIEW) -->
-    <div class="tilt-card bg-white/5 backdrop-blur-lg rounded-xl p-6
-                transition shadow-lg hover:shadow-blue-500/40">
-
-      <!-- 3D CANVAS -->
-      <!-- <div id="project-3d-preview"
-           class="h-40 w-full rounded-lg mb-4 bg-black cursor-grab"></div> -->
-
-      <img src="assets/images/E2MC.png"
-           alt="Project preview"
-           class="h-40 w-full object-cover rounded-lg mb-4" />
-
-
-      <h3 class="text-xl font-semibold">
-        Emory2MC: 3D Mesh Reconstruction and Voxel Rendering of Emory University in Minecraft
-      </h3>
-
-      <p class="text-sm text-gray-400 mt-1">
-        Computer Vision · Ongoing
-      </p>
-
-      <p class="mt-3 text-gray-300">
-        Built pipeline for large-scale 3D reconstruction of environments from video, made 3D reconstructions compatible with voxel rendering for application to Minecraft game environment, and produced a complete reconstruction of Emory University Atlanta campus in Minecraft
-      </p>
-
-      <div class="flex gap-4 mt-4 text-sm font-semibold">
-        <a href="assets/papers/Computer_Vision.pdf" target="_blank"
-           class="bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent hover:underline">
-          View PDF →
-        </a>
-
-        <a href="#" target="_blank"
-           class="bg-gradient-to-r from-gray-400 to-gray-200 bg-clip-text text-transparent hover:underline">
-          GitHub →
-        </a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- EXPERIENCE CARDS -->
-<section id="experience" class="container mx-auto py-20 px-6">
-  <h2 class="text-4xl font-bold mb-12 bg-gradient-to-r from-orange-400 to-yellow-500 bg-clip-text text-transparent">
-    Experience
-  </h2>
-
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-    <!-- CARD -->
-    <div class="tilt-card bg-white/5 backdrop-blur-lg rounded-xl p-6
-            transition shadow-lg hover:shadow-orange-500/40">
-      <div class="h-40 bg-gray-800 rounded-lg mb-4 flex items-center justify-center text-gray-400">
-              
-        <img src="assets/images/mosaic.png"
-           alt="Project preview"
-           class="h-40 w-full object-cover rounded-lg mb-4" />
-
-      </div>
-      <h3 class="text-xl font-semibold">Medical Scribe</h3>
-      <p class="text-sm text-gray-400">Mosaic Health Center | Oct. 2025 - Current</p>
-      <p class="mt-3 text-gray-300">
-        Scribed for physicians using eClinicalWorks EHR including HPI, ROS, and treatment plans
-      </p>
-    </div>
-
-    <div class="tilt-card bg-white/5 backdrop-blur-lg rounded-xl p-6
-            transition shadow-lg hover:shadow-orange-500/40">
-      <div class="h-40 bg-gray-800 rounded-lg mb-4 flex items-center justify-center text-gray-400">
-      
-        <img src="assets/images/chizu.png"
-           alt="Project preview"
-           class="h-40 w-full object-cover rounded-lg mb-4" />
-
-      </div>
-      <h3 class="text-xl font-semibold">Engineering Intern</h3>
-      <p class="text-sm text-gray-400">Chizu Electric Co., LTD. | June 2024</p>
-      <p class="mt-3 text-gray-300">
-        Created 2D and 3D models using iCAD SX software for electrical manufacturing and evaluated real-world applications of company components in Tesla and Panasonic systems
-      </p>
-    </div>
-
-    <div class="tilt-card bg-white/5 backdrop-blur-lg rounded-xl p-6
-            transition shadow-lg hover:shadow-orange-500/40">
-      <div class="h-40 bg-gray-800 rounded-lg mb-4 flex items-center justify-center text-gray-400">
-      
-        <img src="assets/images/IMG_0492.JPG"
-           alt="Project preview"
-           class="h-40 w-full object-cover rounded-lg mb-4" />
-
-      </div>
-      <h3 class="text-xl font-semibold">Study Abroad</h3>
-      <p class="text-sm text-gray-400">Kansai Gaidai University | Jan. 2024 - June 2024</p>
-      <p class="mt-3 text-gray-300">
-        Immersed with Japanese society through language, art history, culture, and studio art
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<section id="conferences" class="container mx-auto py-20 px-6">
-  <h2 class="text-4xl font-bold mb-12 bg-gradient-to-r from-green-400 to-yellow-500 bg-clip-text text-transparent">
-    Conferences & Abstracts
-  </h2>
-
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-    <!-- CARD -->
-    <div class="tilt-card bg-white/5 backdrop-blur-lg rounded-xl p-6
-            transition shadow-lg hover:shadow-green-500/40">
-      <div class="h-40 bg-gray-800 rounded-lg mb-4 flex items-center justify-center text-gray-400">
-
-      <img src="assets/images/aimed.jpg"
-           alt="Project preview"
-           class="h-40 w-full object-cover rounded-lg mb-4" />
-
-      </div>
-      <h3 class="text-xl font-semibold">AIMed26</h3>
-      <p class="text-sm text-gray-400">Orlando, FL | Nov. 10-13, 2026</p>
-      <p class="mt-3 text-gray-300">
-        Abstract TBA
-      </p>
-      <div class="flex gap-4 mt-4 text-sm font-semibold">
-        <a href="https://www.aimed26.com/" target="_blank"
-           class="bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent hover:underline">
-          View Conference Site →
-        </a>
-      </div>
-    </div>
-
-    <div class="tilt-card bg-white/5 backdrop-blur-lg rounded-xl p-6
-            transition shadow-lg hover:shadow-green-500/40">
-      <div class="h-40 bg-gray-800 rounded-lg mb-4 flex items-center justify-center text-gray-400">
-
-      <img src="assets/images/ceb.png"
-           alt="Project preview"
-           class="h-40 w-full object-cover rounded-lg mb-4" />
-
-      </div>
-      <h3 class="text-xl font-semibold">CEB</h3>
-      <p class="text-sm text-gray-400">Boston, MA | April 13-15, 2026</p>
-      <p class="mt-3 text-gray-300">
-        Bradykinin-Induced Pulmonary Angioedema: A Curable Form of ARDS in COVID-19 Patients?
-      </p>
-      <div class="flex gap-4 mt-4 text-sm font-semibold">
-        <a href="assets/papers/Final COVID.pdf" target="_blank"
-           class="bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent hover:underline">
-          View PDF →
-        </a>
-      </div>
-    </div>
-
-    <div class="tilt-card bg-white/5 backdrop-blur-lg rounded-xl p-6
-            transition shadow-lg hover:shadow-green-500/40">
-      <div class="h-40 bg-gray-800 rounded-lg mb-4 flex items-center justify-center text-gray-400">
-
-      <img src="assets/images/AIMED-SanDiego-Sunday-YAPhoto-41.jpg"
-           alt="Project preview"
-           class="h-40 w-full object-cover rounded-lg mb-4" />
-
-      </div>
-      <h3 class="text-xl font-semibold">AIMed25</h3>
-      <p class="text-sm text-gray-400">San Diego | Nov. 9-12, 2025</p>
-      <p class="mt-3 text-gray-300">
-        VignetteGen: Leveraging Large Language Models and Generative Adversarial Networks for Holistic Synthetic Medical Scenarios with Imaging
-      </p>
-      <div class="flex gap-4 mt-4 text-sm font-semibold">
-        <a href="assets/papers/VignetteGen_AIMed25_Abstract.pdf" target="_blank"
-           class="bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent hover:underline">
-          View PDF →
-        </a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="container mx-auto py-24 px-6">
-  <h2 class="text-4xl font-bold mb-12 text-center
-             bg-gradient-to-r from-gray-300 to-gray-500
-             bg-clip-text text-transparent">
-    Contact
-  </h2>
-
-  <div class="max-w-3xl mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-      <!-- EMAIL CARD -->
-      <a href="mailto:thomas.tianyi@gmail.com"
-         class="group bg-white/5 backdrop-blur-lg rounded-xl p-6
-                flex items-center gap-4
-                transition shadow-lg hover:shadow-blue-500/40
-                hover:bg-white/10">
-
-        <!-- Icon -->
-        <div class="p-3 rounded-lg bg-blue-500/20 text-blue-400">
-          <svg xmlns="http://www.w3.org/2000/svg"
-               class="w-6 h-6"
-               fill="none"
-               viewBox="0 0 24 24"
-               stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-              d="M21 8l-9 6-9-6m18 0a2 2 0 00-2-2H5a2 2 0 00-2 2m18 0v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8"/>
-          </svg>
+        <div class="hero-actions">
+          <a class="button button-github" href="https://github.com/thomas-t-ma" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a class="button button-linkedin" href="https://www.linkedin.com/in/thomas-t-ma" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="button button-research" href="#research">Research</a>
+          <a class="button button-projects" href="#projects">Projects</a>
+          <a class="button button-experience" href="#experience">Experience</a>
+          <a class="button button-hobbies" href="#hobbies">Hobbies</a>
         </div>
 
-        <!-- Text -->
-        <div>
-          <p class="text-sm text-gray-400">Email</p>
-          <p class="text-lg font-medium
-                    bg-gradient-to-r from-blue-400 to-indigo-500
-                    bg-clip-text text-transparent">
-            thomas.tianyi@gmail.com
+        <div class="affiliation-chip glass-reactive">
+          <div class="affiliation-logo-wrap">
+            <img src="assets/images/emory-logo.png" alt="Emory University" width="180" height="60" decoding="async" />
+          </div>
+          <div class="affiliation-copy">
+            <span class="affiliation-school">Emory University School of Medicine</span>
+            <span class="affiliation-department">Department of Pathology and Laboratory Medicine</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- HERO 3D SLOT
+           When HERO_MODEL.src is filled in app.js, this entire visual becomes
+           the interactive model viewer. Until then, Woodruff Circle is the poster. -->
+      <div class="hero-model-stage reveal glass-reactive" data-hero-model>
+        <img class="hero-model-poster" src="assets/images/woodruff-circle.png" alt="Emory University campus" fetchpriority="high" decoding="async" />
+        <div class="hero-model-placeholder" aria-hidden="true">
+          <span>3D model</span>
+          <strong>To be filled</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="content-section section-pad">
+      <div class="section-heading reveal">
+        <h2>About Me</h2>
+      </div>
+
+      <div class="editorial-grid">
+        <div class="copy-panel reveal">
+          <p>
+            I graduated highest honors from Emory University with a Bachelor of Science in Computer Science, and I am now preparing for a career in medicine with a special interest in pathology. I’m passionate about applying computational models to improve diagnostics, treatment decisions, and patient outcomes from both the lab and the clinic.
+          </p>
+          <p>
+            My research focuses on artificial intelligence in healthcare. I’m currently working at the O'Doherty Lab in the Department of Pathology and Laboratory Medicine at Emory University. In the past, I received highest honors for my thesis on using deep learning to automate flow cytometry interpretation for multiple myeloma detection. I have also developed a framework that leverages graph neural networks and attention-based mechanisms to predict breast cancer recurrence from histologic whole-slide images.
+          </p>
+          <p>
+            I’m excited by the intersection of computer science and medicine and aim to contribute to a future where machine learning helps patients, families, and medical staff to make more informed decisions.
           </p>
         </div>
-      </a>
+        <figure class="editorial-photo reveal glass-reactive">
+          <img src="assets/images/thomas.JPG" alt="Thomas Ma" loading="lazy" decoding="async" />
+        </figure>
+      </div>
+    </section>
 
-      <!-- PHONE CARD -->
-      <a href="tel:+16786727957"
-         class="group bg-white/5 backdrop-blur-lg rounded-xl p-6
-                flex items-center gap-4
-                transition shadow-lg hover:shadow-emerald-500/40
-                hover:bg-white/10">
+    <!-- RESEARCH -->
+    <section id="research" class="content-section section-pad">
+      <div class="section-heading reveal">
+        <h2>Research</h2>
+      </div>
 
-        <!-- Icon -->
-        <div class="p-3 rounded-lg bg-emerald-500/20 text-emerald-400">
-          <svg xmlns="http://www.w3.org/2000/svg"
-               class="w-6 h-6"
-               fill="none"
-               viewBox="0 0 24 24"
-               stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-              d="M3 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H7a11 11 0 005 5v-1a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-1C9.163 21 3 14.837 3 7V5z"/>
-          </svg>
-        </div>
+      <div class="card-grid card-grid-three">
+        <article class="work-card reveal glass-reactive">
+          <div class="card-media">
+            <img src="assets/images/black.jpg" alt="Preview image" loading="lazy" decoding="async" />
+          </div>
+          <div class="card-body">
+            <div class="card-meta"><span>Computer Vision</span><span>Planning</span></div>
+            <h3>Improved Facial Tracking</h3>
+            <a class="text-link" href="assets/papers/Computer_Vision.pdf" target="_blank" rel="noopener noreferrer">View PDF →</a>
+          </div>
+        </article>
 
-        <!-- Text -->
-        <div>
-          <p class="text-sm text-gray-400">Phone</p>
-          <p class="text-lg font-medium
-                    bg-gradient-to-r from-green-400 to-emerald-500
-                    bg-clip-text text-transparent">
-            +1 (678) 672-7957
-          </p>
-        </div>
-      </a>
+        <article class="work-card reveal featured-card glass-reactive">
+          <div class="card-media">
+            <img src="assets/images/flow-cytometry.webp" alt="Flow cytometry plot" loading="lazy" decoding="async" />
+          </div>
+          <div class="card-body">
+            <div class="card-meta"><span>Pathology</span><span>Completed</span></div>
+            <h3>AI Automation of Flow Cytometry to Identify Myeloma</h3>
+            <p>Developed a novel Branched Attention for Monoclonal Sensitivity (BAMS) model based on ABMIL for automated flow interpretations that outperformed classical ML, CNN, and ABMIL in AUROC and F1 in detecting abnormal cell populations, and introduced the novel application of deep learning models on flow data for myeloma detection.</p>
+            <a class="text-link" href="https://etd.library.emory.edu/concern/etds/bv73c2111" target="_blank" rel="noopener noreferrer">View on ETD →</a>
+          </div>
+        </article>
 
-    </div>
-  </div>
-</section>
+        <article class="work-card reveal glass-reactive">
+          <div class="card-media">
+            <img src="assets/images/biospecimen-whole-slide-image-1.png" alt="Digital pathology whole-slide image" loading="lazy" decoding="async" />
+          </div>
+          <div class="card-body">
+            <div class="card-meta"><span>Pathology</span><span>Ongoing</span></div>
+            <h3>Graphs HELP Predict Cancer: Multimodal GNNs for Cancer Recurrence Risk</h3>
+            <p>Created a novel Gated Fusion hybrid model (Graph Transformer + Hypergraph Neural Network classifier) and implemented whole-slide image data and clinicopathologic metadata compatibility to predict recurrence risk.</p>
+            <a class="text-link" href="assets/papers/HELP - Final Report.pdf" target="_blank" rel="noopener noreferrer">View PDF →</a>
+          </div>
+        </article>
+      </div>
+    </section>
 
-<!-- HOBBIES -->
-<section id="hobbies" class="container mx-auto py-20 px-6">
-  <h2 class="text-4xl font-bold mb-12 bg-gradient-to-r from-purple-500 to-red-500 bg-clip-text text-transparent">
-    Hobbies
-  </h2>
+    <!-- PROJECTS -->
+    <section id="projects" class="content-section section-pad">
+      <div class="section-heading reveal">
+        <h2>Projects</h2>
+      </div>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <div class="card-grid card-grid-three">
+        <article class="work-card reveal glass-reactive">
+          <div class="card-media">
+            <img src="assets/images/black.jpg" alt="Project preview" loading="lazy" decoding="async" />
+          </div>
+          <div class="card-body">
+            <div class="card-meta"><span>Computer Vision</span><span>Planning</span></div>
+            <h3>AISHA: Artificial Intelligence-Simulated Human Avatar</h3>
+            <p>Avatar from gaussian splatting with movement model for motion simulation, LLM for conversation, and VLM for visual-based response.</p>
+            <div class="card-actions">
+              <a class="text-link" href="#">View PDF →</a>
+              <a class="text-link text-link-muted" href="#">GitHub →</a>
+            </div>
+          </div>
+        </article>
 
-    <!-- Gallery Item -->
-    <div class="tilt-card overflow-hidden rounded-xl bg-white/5 backdrop-blur-lg
-                transition shadow-lg hover:shadow-purple-500/40">
-      <img
-        src="assets/images/hobbies/EAGLE CON-29.jpg"
-        alt=""
-        class="w-full h-56 object-cover hover:scale-105 transition-transform duration-300"
-      />
-    </div>
+        <article class="work-card reveal glass-reactive">
+          <div class="card-media">
+            <img src="assets/images/black.jpg" alt="Project preview" loading="lazy" decoding="async" />
+          </div>
+          <div class="card-body">
+            <div class="card-meta"><span>Game</span><span>Planning</span></div>
+            <h3>Horror Game</h3>
+            <div class="card-actions">
+              <a class="text-link" href="#">View PDF →</a>
+              <a class="text-link text-link-muted" href="#">GitHub →</a>
+            </div>
+          </div>
+        </article>
 
-    <!-- Gallery Item -->
-    <div class="tilt-card overflow-hidden rounded-xl bg-white/5 backdrop-blur-lg
-                transition shadow-lg hover:shadow-red-500/40">
-      <img
-        src="assets/images/hobbies/BTS.jpg"
-        alt=""
-        class="w-full h-56 object-cover hover:scale-105 transition-transform duration-300"
-      />
-    </div>
+        <article class="work-card reveal featured-card glass-reactive">
+          <div class="card-media">
+            <img src="assets/images/E2MC.png" alt="Emory2MC Minecraft reconstruction" loading="lazy" decoding="async" />
+          </div>
+          <div class="card-body">
+            <div class="card-meta"><span>Computer Vision</span><span>Ongoing</span></div>
+            <h3>Emory2MC: 3D Mesh Reconstruction and Voxel Rendering of Emory University in Minecraft</h3>
+            <p>Built pipeline for large-scale 3D reconstruction of environments from video, made 3D reconstructions compatible with voxel rendering for application to Minecraft game environment, and produced a complete reconstruction of Emory University Atlanta campus in Minecraft</p>
+            <div class="card-actions">
+              <a class="text-link" href="assets/papers/Computer_Vision.pdf" target="_blank" rel="noopener noreferrer">View PDF →</a>
+              <a class="text-link text-link-muted" href="#">GitHub →</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
 
-    <!-- Gallery Item -->
-    <div class="tilt-card overflow-hidden rounded-xl bg-white/5 backdrop-blur-lg
-                transition shadow-lg hover:shadow-orange-500/40">
-      <img
-        src="assets/images/hobbies/IMG_6449.JPG"
-        alt=""
-        class="w-full h-56 object-cover hover:scale-105 transition-transform duration-300"
-      />
-    </div>
+    <!-- EXPERIENCE -->
+    <section id="experience" class="content-section section-pad">
+      <div class="section-heading reveal">
+        <h2>Experience</h2>
+      </div>
 
-    <!-- Gallery Item -->
-    <div class="tilt-card overflow-hidden rounded-xl bg-white/5 backdrop-blur-lg
-                transition shadow-lg hover:shadow-pink-500/40">
-      <img
-        src="assets/images/hobbies/IMG_5731.JPG"
-        alt=""
-        class="w-full h-56 object-cover hover:scale-105 transition-transform duration-300"
-      />
-    </div>
+      <div class="experience-list reveal">
+        <article class="experience-row glass-reactive">
+          <figure class="experience-media experience-media-logo">
+            <img src="assets/images/mosaic.png" alt="Mosaic Health Center" loading="lazy" decoding="async" />
+          </figure>
+          <div class="experience-copy">
+            <p class="timeline-date">Oct. 2025 - Current</p>
+            <h3>Medical Scribe</h3>
+            <p class="timeline-place">Mosaic Health Center</p>
+            <p>Scribed for physicians using eClinicalWorks EHR including HPI, ROS, and treatment plans</p>
+          </div>
+        </article>
 
-    <!-- Gallery Item -->
-    <div class="tilt-card overflow-hidden rounded-xl bg-white/5 backdrop-blur-lg
-                transition shadow-lg hover:shadow-indigo-500/40">
-      <img
-        src="assets/images/hobbies/IMG_2628.jpg"
-        alt=""
-        class="w-full h-56 object-cover hover:scale-105 transition-transform duration-300"
-      />
-    </div>
+        <article class="experience-row glass-reactive">
+          <figure class="experience-media experience-media-logo">
+            <img src="assets/images/chizu.png" alt="Chizu Electric" loading="lazy" decoding="async" />
+          </figure>
+          <div class="experience-copy">
+            <p class="timeline-date">June 2024</p>
+            <h3>Engineering Intern</h3>
+            <p class="timeline-place">Chizu Electric Co., LTD.</p>
+            <p>Created 2D and 3D models using iCAD SX software for electrical manufacturing and evaluated real-world applications of company components in Tesla and Panasonic systems</p>
+          </div>
+        </article>
 
-    <!-- Gallery Item -->
-    <div class="tilt-card overflow-hidden rounded-xl bg-white/5 backdrop-blur-lg
-                transition shadow-lg hover:shadow-cyan-500/40">
-      <img
-        src="assets/images/hobbies/IMG_3630.jpg"
-        alt=""
-        class="w-full h-56 object-cover hover:scale-105 transition-transform duration-300"
-      />
-    </div>
+        <article class="experience-row glass-reactive">
+          <figure class="experience-media">
+            <img src="assets/images/IMG_0492.JPG" alt="Kansai Gaidai study abroad" loading="lazy" decoding="async" />
+          </figure>
+          <div class="experience-copy">
+            <p class="timeline-date">Jan. 2024 - June 2024</p>
+            <h3>Study Abroad</h3>
+            <p class="timeline-place">Kansai Gaidai University</p>
+            <p>Immersed with Japanese society through language, art history, culture, and studio art</p>
+          </div>
+        </article>
+      </div>
+    </section>
 
-    <!-- Gallery Item -->
-    <div class="tilt-card overflow-hidden rounded-xl bg-white/5 backdrop-blur-lg
-                transition shadow-lg hover:shadow-cyan-500/40">
-      <img
-        src="assets/images/hobbies/IMG_7811.PNG"
-        alt=""
-        class="w-full h-56 object-cover hover:scale-105 transition-transform duration-300"
-      />
-    </div>
+    <!-- CONFERENCES -->
+    <section id="conferences" class="content-section section-pad">
+      <div class="section-heading reveal">
+        <h2>Conferences &amp; Abstracts</h2>
+      </div>
 
-    <!-- Gallery Item -->
-    <div class="tilt-card overflow-hidden rounded-xl bg-white/5 backdrop-blur-lg
-                transition shadow-lg hover:shadow-cyan-500/40">
-      <img
-        src="assets/images/hobbies/Donut v1.png"
-        alt=""
-        class="w-full h-56 object-cover hover:scale-105 transition-transform duration-300"
-      />
-    </div>
+      <div class="conference-grid">
+        <article class="conference-card reveal glass-reactive">
+          <figure class="conference-media"><img src="assets/images/aimed.jpg" alt="AIMed26" loading="lazy" decoding="async" /></figure>
+          <div class="conference-body">
+            <div class="conference-heading"><h3>AIMed26</h3><p>Orlando, FL | Nov. 10-13, 2026</p></div>
+            <p class="conference-description">Abstract TBA</p>
+            <a class="text-link" href="https://www.aimed26.com/" target="_blank" rel="noopener noreferrer">View Conference Site →</a>
+          </div>
+        </article>
 
-  </div>
-</section>
+        <article class="conference-card reveal glass-reactive">
+          <figure class="conference-media conference-media-ceb"><img src="assets/images/ceb.png" alt="CEB" loading="lazy" decoding="async" /></figure>
+          <div class="conference-body">
+            <div class="conference-heading"><h3>CEB</h3><p>Boston, MA | April 13-15, 2026</p></div>
+            <p class="conference-description">Bradykinin-Induced Pulmonary Angioedema: A Curable Form of ARDS in COVID-19 Patients?</p>
+            <a class="text-link" href="assets/papers/Final COVID.pdf" target="_blank" rel="noopener noreferrer">View PDF →</a>
+          </div>
+        </article>
 
-<script src="app.js"></script>
+        <article class="conference-card reveal glass-reactive">
+          <figure class="conference-media"><img src="assets/images/AIMED-SanDiego-Sunday-YAPhoto-41.jpg" alt="AIMed25" loading="lazy" decoding="async" /></figure>
+          <div class="conference-body">
+            <div class="conference-heading"><h3>AIMed25</h3><p>San Diego | Nov. 9-12, 2025</p></div>
+            <p class="conference-description">VignetteGen: Leveraging Large Language Models and Generative Adversarial Networks for Holistic Synthetic Medical Scenarios with Imaging</p>
+            <a class="text-link" href="assets/papers/VignetteGen_AIMed25_Abstract.pdf" target="_blank" rel="noopener noreferrer">View PDF →</a>
+          </div>
+        </article>
+      </div>
+    </section>
 
-</div>
+    <!-- HOBBIES: all existing photos remain directly viewable and fixed. -->
+    <section id="hobbies" class="content-section section-pad">
+      <div class="section-heading reveal">
+        <h2>Hobbies</h2>
+      </div>
+
+      <div class="hobby-gallery reveal">
+        <figure class="hobby-photo glass-reactive"><img src="assets/images/hobbies/EAGLE CON-29.jpg" alt="" loading="lazy" decoding="async" /></figure>
+        <figure class="hobby-photo glass-reactive"><img src="assets/images/hobbies/BTS.jpg" alt="" loading="lazy" decoding="async" /></figure>
+        <figure class="hobby-photo glass-reactive"><img src="assets/images/hobbies/IMG_6449.JPG" alt="" loading="lazy" decoding="async" /></figure>
+        <figure class="hobby-photo glass-reactive"><img src="assets/images/hobbies/IMG_5731.JPG" alt="" loading="lazy" decoding="async" /></figure>
+        <figure class="hobby-photo glass-reactive"><img src="assets/images/hobbies/IMG_2628.jpg" alt="" loading="lazy" decoding="async" /></figure>
+        <figure class="hobby-photo glass-reactive"><img src="assets/images/hobbies/IMG_3630.jpg" alt="" loading="lazy" decoding="async" /></figure>
+        <figure class="hobby-photo glass-reactive"><img src="assets/images/hobbies/IMG_7811.PNG" alt="" loading="lazy" decoding="async" /></figure>
+        <figure class="hobby-photo glass-reactive"><img src="assets/images/hobbies/Donut v1.png" alt="" loading="lazy" decoding="async" /></figure>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="content-section section-pad contact-section">
+      <div class="contact-copy reveal">
+        <h2>Contact</h2>
+      </div>
+
+      <div class="contact-links reveal">
+        <a class="glass-reactive" href="mailto:thomas.tianyi@gmail.com"><span>Email</span><strong>thomas.tianyi@gmail.com</strong><b>↗</b></a>
+        <a class="glass-reactive" href="tel:+16786727957"><span>Phone</span><strong>+1 (678) 672-7957</strong><b>↗</b></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="current-year"></span> Thomas Ma</span>
+    <a href="#top">Back to top</a>
+  </footer>
+
+  <script src="app.js" defer></script>
 </body>
 </html>
