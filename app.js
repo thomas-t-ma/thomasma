@@ -2,18 +2,15 @@
    Thomas Ma portfolio
    =========================================================
    The page intentionally keeps all content/matched images fixed.
-   Only EXTRA_PHOTOS below are optional and randomized.
+   EXTRA_PHOTOS below are appended to the Hobbies gallery.
 */
 
 /* ---------------------------------------------------------
-   OPTIONAL EXTRA PHOTOS
+   EXTRA HOBBY PHOTOS
    ---------------------------------------------------------
    1. Put extra images in: assets/images/extras/
    2. Add each path below.
-   3. Once at least one path is present, a "Photos" control
-      appears in the desktop navigation.
-   4. Turning it on scatters a small random selection behind
-      the main page content. These NEVER replace content images.
+   3. Every listed image is appended to the Hobbies masonry gallery.
 
    GitHub Pages cannot automatically enumerate a folder, so
    filenames still need to be listed here when you add them.
@@ -21,6 +18,12 @@
 const EXTRA_PHOTOS = [
   // "assets/images/extras/photo-01.jpg",
   // "assets/images/extras/photo-02.jpg",
+  "assets/images/extras/FullSizeRender.jpg",
+  "assets/images/extras/IMG_3870.jpg",
+  "assets/images/extras/IMG_3872.jpg",
+  "assets/images/extras/IMG_3886.jpg",
+  "assets/images/extras/IMG_3889.jpg",
+  "assets/images/extras/IMG_8915.JPG",
 ];
 
 /* ---------------------------------------------------------
@@ -37,7 +40,7 @@ const EXTRA_PHOTOS = [
    that entire poster area is replaced by an interactive model.
 --------------------------------------------------------- */
 const HERO_MODEL = {
-  src: "", // Example: "assets/models/intro.glb"
+  src: "assets/models/small_emory.glb",
   poster: "assets/images/woodruff-circle.png",
   alt: "Interactive 3D model",
 };
@@ -45,14 +48,6 @@ const HERO_MODEL = {
 const MODEL_VIEWER_CDN =
   "https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js";
 
-function shuffle(array) {
-  const copy = [...array];
-  for (let i = copy.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [copy[i], copy[j]] = [copy[j], copy[i]];
-  }
-  return copy;
-}
 
 function initTypedText() {
   const target = document.querySelector("#typed-text");
@@ -167,91 +162,45 @@ function initGlassHighlights() {
 }
 
 /* ---------------------------------------------------------
-   Optional scattered photo layer.
+   Extra photos -> Hobbies gallery.
 --------------------------------------------------------- */
-function renderExtraPhotos() {
-  const layer = document.querySelector("#extra-photo-layer");
-  const toggle = document.querySelector("#extra-photo-toggle");
-  if (!layer || !toggle) return;
-
-  const photos = EXTRA_PHOTOS.filter(Boolean);
-  if (!photos.length || window.innerWidth < 1300) {
-    toggle.hidden = true;
-    layer.replaceChildren();
-    document.body.classList.remove("extra-photos-on");
-    return;
-  }
-
-  toggle.hidden = false;
-  layer.style.height = `${document.documentElement.scrollHeight}px`;
-  layer.replaceChildren();
-
-  const selected = shuffle(photos).slice(0, Math.min(photos.length, 6));
-  const slots = [
-    { y: 0.12, side: "right", r: -5 },
-    { y: 0.28, side: "left", r: 4 },
-    { y: 0.44, side: "right", r: 3 },
-    { y: 0.61, side: "left", r: -4 },
-    { y: 0.77, side: "right", r: 5 },
-    { y: 0.91, side: "left", r: 2 },
-  ];
-
-  const contentWidth = 1180;
-  const outerMargin = Math.max(0, (window.innerWidth - contentWidth) / 2);
-  const documentHeight = document.documentElement.scrollHeight;
-
-  selected.forEach((src, index) => {
-    const slot = slots[index];
-    const width = 150 + Math.round(Math.random() * 34);
-    const figure = document.createElement("figure");
-    const image = document.createElement("img");
-
-    figure.className = "extra-photo";
-    figure.style.top = `${Math.round(documentHeight * slot.y)}px`;
-    figure.style.setProperty("--photo-width", `${width}px`);
-    figure.style.setProperty("--photo-rotate", `${slot.r + (Math.random() * 2 - 1)}deg`);
-
-    if (slot.side === "left") {
-      const left = Math.max(10, outerMargin - width * 0.72);
-      figure.style.left = `${left}px`;
-    } else {
-      const left = Math.min(
-        window.innerWidth - width - 10,
-        window.innerWidth - outerMargin + width * 0.08
-      );
-      figure.style.left = `${Math.max(10, left)}px`;
-    }
-
-    image.src = src;
-    image.alt = "";
-    image.loading = "lazy";
-    image.decoding = "async";
-    figure.appendChild(image);
-    layer.appendChild(figure);
-  });
+function normalizeAssetPath(path) {
+  // Makes copied Windows paths (assets\\images\\...) safe for web URLs too.
+  return String(path || "").trim().replace(/\\/g, "/");
 }
 
-function initExtraPhotoToggle() {
-  const toggle = document.querySelector("#extra-photo-toggle");
-  if (!toggle) return;
+function initExtraHobbyPhotos() {
+  const gallery = document.querySelector("#hobbies .hobby-gallery");
+  if (!gallery) return;
 
-  renderExtraPhotos();
-
-  toggle.addEventListener("click", () => {
-    const enabled = !document.body.classList.contains("extra-photos-on");
-    document.body.classList.toggle("extra-photos-on", enabled);
-    toggle.setAttribute("aria-pressed", String(enabled));
-  });
-
-  let resizeTimer;
-  window.addEventListener(
-    "resize",
-    () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(renderExtraPhotos, 180);
-    },
-    { passive: true }
+  const existingSources = new Set(
+    [...gallery.querySelectorAll("img")].map((img) =>
+      normalizeAssetPath(img.getAttribute("src"))
+    )
   );
+
+  EXTRA_PHOTOS
+    .map(normalizeAssetPath)
+    .filter(Boolean)
+    .filter((src) => !existingSources.has(src))
+    .forEach((src) => {
+      const figure = document.createElement("figure");
+      const image = document.createElement("img");
+
+      figure.className = "hobby-photo glass-reactive hobby-photo-extra";
+      image.src = src;
+      image.alt = "";
+      image.loading = "lazy";
+      image.decoding = "async";
+      image.addEventListener("error", () => {
+        console.warn(`Hobby photo could not be loaded: ${src}`);
+        figure.remove();
+      });
+
+      figure.appendChild(image);
+      gallery.appendChild(figure);
+      existingSources.add(src);
+    });
 }
 
 /* ---------------------------------------------------------
@@ -312,7 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initNavigation();
   initTypedText();
   initRevealAnimations();
+  initExtraHobbyPhotos();
   initGlassHighlights();
-  initExtraPhotoToggle();
   initHeroModel();
 });

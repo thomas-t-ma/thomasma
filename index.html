@@ -14,11 +14,7 @@
 <body>
   <div class="page-glow page-glow-one" aria-hidden="true"></div>
   <div class="page-glow page-glow-two" aria-hidden="true"></div>
-
-  <!-- Optional decorative photos are inserted here by app.js only when EXTRA_PHOTOS is populated. -->
-  <div id="extra-photo-layer" class="extra-photo-layer" aria-hidden="true"></div>
-
-  <header class="site-header glass-reactive">
+<header class="site-header glass-reactive">
     <a class="brand" href="#top" aria-label="Thomas Ma home">TM</a>
 
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
@@ -34,7 +30,6 @@
       <a href="#conferences">Conferences</a>
       <a href="#hobbies">Hobbies</a>
       <a href="#contact">Contact</a>
-      <button id="extra-photo-toggle" class="nav-photo-toggle" type="button" aria-pressed="false" hidden>Photos</button>
     </nav>
   </header>
 
@@ -125,7 +120,7 @@
 
         <article class="work-card reveal featured-card glass-reactive">
           <div class="card-media">
-            <img src="assets/images/flow-cytometry.webp" alt="Flow cytometry plot" loading="lazy" decoding="async" />
+            <img src="assets/images/flow-cytometry.JPG" alt="Honors Thesis Ceremony" loading="lazy" decoding="async" />
           </div>
           <div class="card-body">
             <div class="card-meta"><span>Pathology</span><span>Completed</span></div>
@@ -309,7 +304,7 @@
       </div>
     </section>
 
-    <!-- HOBBIES: all existing photos remain directly viewable and fixed. -->
+    <!-- HOBBIES: existing photos plus EXTRA_PHOTOS from app.js are shown here. -->
     <section id="hobbies" class="content-section section-pad">
       <div class="section-heading reveal">
         <h2>Hobbies</h2>
@@ -341,7 +336,7 @@
   </main>
 
   <footer class="site-footer">
-    <span>© <span id="current-year"></span> Thomas Ma</span>
+    <span><span id="current-year"></span> Thomas Ma</span>
     <a href="#top">Back to top</a>
   </footer>
 
