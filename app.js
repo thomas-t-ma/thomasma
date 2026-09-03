@@ -18,17 +18,17 @@
 const EXTRA_PHOTOS = [
   // "assets/images/extras/photo-01.jpg",
   // "assets/images/extras/photo-02.jpg",
-  "assets/images/extras/FullSizeRender.jpg",
-  "assets/images/extras/IMG_3870.jpg",
-  "assets/images/extras/IMG_3872.jpg",
-  "assets/images/extras/IMG_3886.jpg",
-  "assets/images/extras/IMG_3889.jpg",
-  "assets/images/extras/IMG_8915.JPG",
-  "assets/images/extras/7R6A1764.JPG",
-  "assets/images/extras/7R6A1767.JPG",
-  "assets/images/extras/7R6A1775.JPG",
-  "assets/images/extras/7R6A1875.JPG",
-  "assets/images/extras/7R6A1915.JPG",
+  "assets/web/extras/FullSizeRender.webp",
+  "assets/web/extras/IMG_3870.webp",
+  "assets/web/extras/IMG_3872.webp",
+  "assets/web/extras/IMG_3886.webp",
+  "assets/web/extras/IMG_3889.webp",
+  "assets/web/extras/IMG_8915.webp",
+  "assets/web/extras/7R6A1764.webp",
+  "assets/web/extras/7R6A1767.webp",
+  "assets/web/extras/7R6A1775.webp",
+  "assets/web/extras/7R6A1875.webp",
+  "assets/web/extras/7R6A1915.webp",
 ];
 
 /* ---------------------------------------------------------
@@ -46,7 +46,7 @@ const EXTRA_PHOTOS = [
 --------------------------------------------------------- */
 const HERO_MODEL = {
   src: "assets/models/small_emory.glb",
-  poster: "assets/images/woodruff-circle.png",
+  poster: "assets/web/woodruff-circle.webp",
   alt: "Interactive 3D model",
 };
 
@@ -196,6 +196,7 @@ function initExtraHobbyPhotos() {
       image.src = src;
       image.alt = "";
       image.loading = "lazy";
+      image.fetchPriority = "low";
       image.decoding = "async";
       image.addEventListener("error", () => {
         console.warn(`Hobby photo could not be loaded: ${src}`);
@@ -240,6 +241,8 @@ function initHeroModel() {
   const stage = document.querySelector("[data-hero-model]");
   if (!stage || !HERO_MODEL.src) return;
 
+  // Load automatically on page initialization. The poster remains visible
+  // while the viewer library/model are loading.
   ensureModelViewerLibrary()
     .then(() => {
       const viewer = document.createElement("model-viewer");
@@ -251,11 +254,18 @@ function initHeroModel() {
       viewer.setAttribute("shadow-intensity", "1");
       viewer.setAttribute("environment-image", "neutral");
       viewer.setAttribute("interaction-prompt", "auto");
+      viewer.setAttribute("loading", "eager");
       stage.replaceChildren(viewer);
     })
     .catch((error) => {
       console.error(error);
-      // The poster/placeholder stays visible if the viewer cannot load.
+      const placeholder = stage.querySelector(".hero-model-placeholder");
+      if (placeholder) {
+        const label = placeholder.querySelector("span");
+        const status = placeholder.querySelector("strong");
+        if (label) label.textContent = "Interactive 3D";
+        if (status) status.textContent = "Could not load";
+      }
     });
 }
 

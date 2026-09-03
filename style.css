@@ -52,7 +52,15 @@ body {
 }
 
 a { color: inherit; text-decoration: none; }
-img { display: block; max-width: 100%; }
+img {
+  display: block;
+  max-width: 100%;
+  image-rendering: auto;
+  filter: none;
+  /* Keep raster images in the normal page paint path rather than explicitly
+     promoting them to transformed/composited layers. */
+  backface-visibility: visible;
+}
 button, input, textarea, select { font: inherit; }
 ::selection { background: rgba(167, 139, 250, 0.34); }
 
@@ -129,7 +137,7 @@ button, input, textarea, select { font: inherit; }
   cursor: pointer;
   transition: color 160ms ease, background 160ms ease;
 }
-.site-nav a:hover:hover[aria-pressed="true"] { color: #fff; background: rgba(255,255,255,0.06); }
+.site-nav a:hover { color: #fff; background: rgba(255,255,255,0.06); }
 .nav-toggle { display: none; }
 
 .site-shell { width: min(calc(100% - 36px), var(--max)); margin: 0 auto; }
@@ -311,6 +319,7 @@ p { color: var(--muted); }
   height: 100%;
   min-height: 590px;
   object-fit: cover;
+  image-rendering: auto;
 }
 .hero-model-placeholder {
   position: absolute;
@@ -335,6 +344,8 @@ p { color: var(--muted); }
   letter-spacing: 0.12em;
 }
 .hero-model-placeholder strong { color: #fff; font-size: 0.78rem; font-weight: 720; }
+
+
 .hero-model-stage model-viewer {
   display: block;
   width: 100%;
@@ -394,7 +405,9 @@ p { color: var(--muted); }
   box-shadow: var(--shadow);
   transform: rotate(1.5deg);
 }
-.editorial-photo > img { width: 100%; height: 460px; object-fit: cover; object-position: center top; }
+.editorial-photo > img { width: 100%; height: 460px; object-fit: cover; object-position: center top;
+  image-rendering: auto;
+}
 
 .card-grid { display: grid; gap: 20px; }
 .card-grid-three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -417,6 +430,7 @@ p { color: var(--muted); }
 .featured-card { border-color: rgba(239, 68, 68, 0.34); }
 .card-media { position: relative; height: 190px; overflow: hidden; background: #111125; }
 .card-media > img { width: 100%; height: 100%; object-fit: cover; transition: transform 500ms ease; }
+.card-media > img { image-rendering: auto; }
 .work-card:hover .card-media > img { transform: scale(1.035); }
 .card-body { display: flex; flex: 1; flex-direction: column; padding: 24px; }
 .card-body p { margin-bottom: 22px; font-size: 0.94rem; }
@@ -468,6 +482,7 @@ p { color: var(--muted); }
   width: 100%;
   height: 100%;
   object-fit: cover;
+  image-rendering: auto;
 }
 .experience-media-logo {
   background: #111125;
@@ -517,7 +532,10 @@ p { color: var(--muted); }
   width: 100%;
   height: 100%;
   object-fit: cover;
+  image-rendering: auto;
+  transition: transform 500ms ease;
 }
+.conference-card:hover .conference-media img { transform: scale(1.035); }
 .conference-media-ceb img {
   padding: 0;
   object-fit: cover;
@@ -564,6 +582,7 @@ p { color: var(--muted); }
   height: auto;
   object-fit: contain;
   transition: transform 500ms ease;
+  image-rendering: auto;
 }
 .hobby-photo:hover img { transform: none; }
 
@@ -595,6 +614,7 @@ p { color: var(--muted); }
   font-size: 0.82rem;
 }
 .site-footer a:hover { color: #fff; }
+
 
 /* -------------------------------------------------------
    Cursor-responsive glass highlight
