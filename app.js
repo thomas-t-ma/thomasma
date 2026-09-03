@@ -26,7 +26,6 @@ const EXTRA_PHOTOS = [
   "assets/images/extras/IMG_8915.JPG",
   "assets/images/extras/7R6A1764.JPG",
   "assets/images/extras/7R6A1767.JPG",
-  "assets/images/extras/7R6A1770.JPG",
   "assets/images/extras/7R6A1775.JPG",
   "assets/images/extras/7R6A1875.JPG",
   "assets/images/extras/7R6A1915.JPG",
