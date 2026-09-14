@@ -451,6 +451,118 @@ p { color: var(--muted); }
 .card-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: auto; }
 .card-actions .text-link { margin-top: 0; }
 
+
+/* -------------------------------------------------------
+   Single-row media rails
+   The row stays compact. Trackpad, touch, keyboard, and mouse-drag all work;
+   edge chevrons only appear on pointer devices when there is more to browse.
+------------------------------------------------------- */
+.card-carousel-shell {
+  position: relative;
+  min-width: 0;
+}
+
+
+.carousel-controls {
+  position: absolute;
+  z-index: 8;
+  inset: 0;
+  pointer-events: none;
+}
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  display: grid;
+  width: 44px;
+  height: 58px;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: 16px;
+  color: rgba(255,255,255,0.92);
+  background: rgba(10,10,28,0.76);
+  backdrop-filter: blur(14px) saturate(135%);
+  -webkit-backdrop-filter: blur(14px) saturate(135%);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.24);
+  cursor: pointer;
+  pointer-events: auto;
+  font-size: 2rem;
+  font-weight: 420;
+  line-height: 1;
+  opacity: 0;
+  transform: translateY(-50%) scale(0.94);
+  transition: opacity 160ms ease, transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+.carousel-arrow[data-carousel-prev] { left: 8px; }
+.carousel-arrow[data-carousel-next] { right: 8px; }
+.card-carousel-shell:hover .carousel-arrow:not(:disabled),
+.card-carousel-shell:focus-within .carousel-arrow:not(:disabled) {
+  opacity: 0.92;
+  transform: translateY(-50%) scale(1);
+}
+.carousel-arrow:hover:not(:disabled) {
+  opacity: 1 !important;
+  border-color: rgba(255,255,255,0.28);
+  background: rgba(18,18,42,0.9);
+}
+.carousel-arrow:disabled {
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+.card-carousel-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(320px, 360px);
+  grid-template-rows: 1fr;
+  align-items: stretch;
+  gap: 20px;
+  min-width: 0;
+  padding: 7px 4px 14px;
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-snap-type: x proximity;
+  scroll-behavior: smooth;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: none;
+  cursor: grab;
+  touch-action: pan-x pan-y;
+}
+.card-carousel-track::-webkit-scrollbar { display: none; }
+.card-carousel-track.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+  user-select: none;
+}
+.card-carousel-track > .work-card,
+.card-carousel-track > .conference-card {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+}
+
+/* Real destinations stay anchored at the bottom of each card. */
+.card-body .card-actions,
+.card-body > .text-link,
+.conference-body > .text-link { margin-top: auto; }
+
+@media (hover: none), (pointer: coarse) {
+  .carousel-arrow { display: none; }
+}
+
+@media (max-width: 980px) {
+  .card-carousel-track { grid-auto-columns: minmax(300px, 52vw); }
+}
+
+@media (max-width: 680px) {
+  .card-carousel-track {
+    grid-auto-columns: minmax(270px, 86vw);
+    gap: 14px;
+  }
+}
+
 .experience-list {
   display: grid;
   gap: 18px;

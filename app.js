@@ -209,6 +209,104 @@ function initExtraHobbyPhotos() {
     });
 }
 
+
+
+/* ---------------------------------------------------------
+   Single-row media rails.
+   Trackpad/touch work natively; desktop also supports edge chevrons,
+   keyboard arrows, and click-drag scrolling.
+--------------------------------------------------------- */
+function initCardCarousels() {
+  document.querySelectorAll("[data-card-carousel]").forEach((carousel) => {
+    const track = carousel.querySelector("[data-carousel-track]");
+    const previous = carousel.querySelector("[data-carousel-prev]");
+    const next = carousel.querySelector("[data-carousel-next]");
+    if (!track || !previous || !next) return;
+
+    const getStep = () => {
+      const firstCard = track.firstElementChild;
+      if (!firstCard) return Math.max(300, track.clientWidth * 0.8);
+      const styles = getComputedStyle(track);
+      const gap = Number.parseFloat(styles.columnGap || styles.gap || "20") || 20;
+      return firstCard.getBoundingClientRect().width + gap;
+    };
+
+    const updateControls = () => {
+      const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
+      // A modest edge tolerance prevents controls from lingering because of
+      // sub-pixel scroll positions or smooth-scroll settling near either end.
+      const edgeTolerance = 18;
+      const canLeft = track.scrollLeft > edgeTolerance;
+      const canRight = track.scrollLeft < maxScroll - edgeTolerance;
+      previous.disabled = !canLeft;
+      next.disabled = !canRight;
+    };
+
+    previous.addEventListener("click", () => {
+      track.scrollBy({ left: -getStep(), behavior: "smooth" });
+    });
+    next.addEventListener("click", () => {
+      track.scrollBy({ left: getStep(), behavior: "smooth" });
+    });
+
+    track.addEventListener("keydown", (event) => {
+      if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+      event.preventDefault();
+      track.scrollBy({
+        left: event.key === "ArrowLeft" ? -getStep() : getStep(),
+        behavior: "smooth",
+      });
+    });
+
+    let pointerId = null;
+    let startX = 0;
+    let startScroll = 0;
+    let dragged = false;
+    let suppressNextClick = false;
+
+    track.addEventListener("pointerdown", (event) => {
+      if (event.button !== 0 || event.target.closest("a, button")) return;
+      pointerId = event.pointerId;
+      startX = event.clientX;
+      startScroll = track.scrollLeft;
+      dragged = false;
+      track.setPointerCapture?.(pointerId);
+    });
+
+    track.addEventListener("pointermove", (event) => {
+      if (pointerId !== event.pointerId) return;
+      const distance = event.clientX - startX;
+      if (!dragged && Math.abs(distance) < 5) return;
+      dragged = true;
+      track.classList.add("is-dragging");
+      track.scrollLeft = startScroll - distance;
+    });
+
+    const endDrag = (event) => {
+      if (pointerId !== event.pointerId) return;
+      if (dragged) suppressNextClick = true;
+      track.classList.remove("is-dragging");
+      try { track.releasePointerCapture?.(pointerId); } catch (_) {}
+      pointerId = null;
+      dragged = false;
+      requestAnimationFrame(updateControls);
+    };
+
+    track.addEventListener("pointerup", endDrag);
+    track.addEventListener("pointercancel", endDrag);
+    track.addEventListener("click", (event) => {
+      if (!suppressNextClick) return;
+      event.preventDefault();
+      event.stopPropagation();
+      suppressNextClick = false;
+    }, true);
+
+    track.addEventListener("scroll", updateControls, { passive: true });
+    window.addEventListener("resize", updateControls, { passive: true });
+    requestAnimationFrame(updateControls);
+  });
+}
+
 /* ---------------------------------------------------------
    Optional Emory2MC 3D viewer.
 --------------------------------------------------------- */
@@ -277,6 +375,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initTypedText();
   initRevealAnimations();
   initExtraHobbyPhotos();
+  initCardCarousels();
   initGlassHighlights();
   initHeroModel();
 });
